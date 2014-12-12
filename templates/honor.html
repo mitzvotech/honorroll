@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block body %}
+  <h1>Add an Honor for {{attorney}}</h1>
+  <form class="grid-form" action="{{request.path}}" method="POST">
+    {{ form.hidden_tag() }}
+    <fieldset>
+        <legend>Honor Info</legend>
+        <div data-row-span="3">
+            <div data-field-span="1"><label>{{form.year.label}}</label>{{form.year()}}</div>
+            <div data-field-span="1"><label>{{form.honor_choice.label}}</label>{{form.honor_choice()}}</div>
+            <div data-field-span="1"><label>{{form.rule_49_choice.label}}</label>{{form.rule_49_choice()}}</div>
+        </div>
+    </fieldset>
+    <input type="submit">
+</form>
+{% endblock %}

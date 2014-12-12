@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block extra_css %}
+<style type="text/css">
+</style>
+{% endblock %}
+
+
+{% block body %}
+  <!-- <h1>Add an Attorney</h1> -->
+  <div class="form-style-8">
+  <form class="grid-form" action="{{request.path}}" method="POST">
+    {{ form.hidden_tag() }}
+    <fieldset>
+        <legend>Add an Attorney</legend>
+        <div data-row-span="7">
+            <div data-field-span="3"><label>{{form.first_name.label}}</label>{{form.first_name()}}</div>
+            <div data-field-span="1"><label>{{form.middle_initial.label}}</label>{{form.middle_initial()}}</div>
+            <div data-field-span="3"><label>{{form.last_name.label}}</label>{{form.last_name()}}</div>
+        </div>
+        <div data-row-span="2">
+            <div data-field-span="1">
+                <label>{{form.email_address.label}}</label>
+                {{form.email_address()}}
+            </div>
+            <div data-field-span="1">
+                <label>{{form.organization_name.label}}</label>
+                {{form.organization_name}}
+            </div>
+        </div>
+    </fieldset>
+    <input type="submit">
+</form>
+</div>
+{% endblock %}
