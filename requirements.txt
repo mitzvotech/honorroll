@@ -1,14 +1,16 @@
 Flask==0.10.1
+Flask-Admin==1.0.9
+Flask-PyMongo==0.3.0
+Flask-WTF==0.10.3
 Jinja2==2.7.3
 MarkupSafe==0.23
 PyExecJS==1.1.0
+WTForms==2.0.1
 WebOb==1.4
 Werkzeug==0.9.6
 bowerstatic==0.7
 itsdangerous==0.24
+mongokit==0.9.1.1
+pymongo==2.7.2
 webassets==0.10.1
 wsgiref==0.1.2
-wtforms
-
-# MongoDB
-mongokit
