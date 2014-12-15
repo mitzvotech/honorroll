@@ -1,8 +1,10 @@
 from mongokit import *
 import datetime
 from bson.objectid import ObjectId
+import os
 
-connection = Connection()
+MONGODB_URI = os.environ["MONGOLAB_URI"]
+connection = Connection(MONGODB_URI)
 MONGODB_HOST = 'localhost'
 MONGODB_PORT = 27017
 

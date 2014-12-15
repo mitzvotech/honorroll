@@ -11,10 +11,12 @@ from pymongo import Connection
 from forms import newAttorneyForm, newHonorForm, BulkForm, LoginForm, RegisterForm, AdminAttorneyForm
 from models import *
 
-
-
 app = Flask(__name__)
 CsrfProtect(app)
+
+###
+# Defined Routes
+###
 
 @app.route("/")
 def index():
@@ -76,12 +78,10 @@ def attorneys():
 def organizations():
 	return dumps(json.load(open('data/organizations.json', 'r')))
 
-
 @app.route('/api/users', methods=["GET"])
 def users():
 	users = connection.honorroll.users.find()
 	return dumps(users)
-
 
 #### 
 # User Authentication
