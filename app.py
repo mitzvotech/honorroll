@@ -80,7 +80,7 @@ def organizations():
 
 @app.route('/api/users', methods=["GET"])
 def users():
-	users = connection.honorroll.users.find()
+	users = db.users.find()
 	return dumps(users)
 
 #### 
@@ -97,7 +97,7 @@ def load_user(user_id):
 class User(Document):
     def __init__(self, user_id):
         self.id = user_id.lower()
-        self.db = connection.honorroll.users
+        self.db = db.users
         self.account = self.db.find_one({'uid': self.id})
 
     def create(self):
@@ -196,6 +196,6 @@ app.secret_key = 'test'
 if __name__ == "__main__":
     app.debug = True
     admin = admin.Admin(app, name='Honor Roll')#,base_template="admin.html")
-    admin.add_view(AttorneyView(connection.honorroll.attorneys, 'Attorneys'))
-    admin.add_view(UserView(connection.honorroll.users, 'Users'))
+    admin.add_view(AttorneyView(db.attorneys, 'Attorneys'))
+    admin.add_view(UserView(db.users, 'Users'))
     app.run()

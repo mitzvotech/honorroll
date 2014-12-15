@@ -4,7 +4,9 @@ from bson.objectid import ObjectId
 import os
 
 MONGODB_URI = os.environ["MONGOLAB_URI"]
+MONGODB_DB = os.environ["MONGOLAB_DB"]
 connection = Connection(MONGODB_URI)
+db = connection[MONGODB_DB]
 MONGODB_HOST = 'localhost'
 MONGODB_PORT = 27017
 
@@ -12,7 +14,7 @@ MONGODB_PORT = 27017
 @connection.register
 class Attorney(Document):
 	__collection__ = 'attorneys'
-	__database__ = 'honorroll'
+	__database__ = MONGODB_DB
 	structure = {
 		'first_name': unicode,
 		'middle_initial': unicode,
