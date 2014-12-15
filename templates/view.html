@@ -16,7 +16,7 @@
         <tbody>
         {% for attorney in attorneys %}
             <tr>
-                <td>{{attorney.first_name}}{% if attorney.middle_initial%}{{attorney.middle_initial}} {% endif%} {{attorney.last_name}}</td>
+                <td>{{attorney.first_name}}{% if attorney.middle_initial%} {{attorney.middle_initial}} {% endif%} {{attorney.last_name}}</td>
                 <td>{{attorney.organization_name}}</td>
                 <td>{{attorney.records[0].year}}</td>
                 <td>{{attorney.records[0].honor_choice}}</td>

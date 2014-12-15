@@ -29,19 +29,24 @@
 
 		<div class="flakes-navigation">
 			<a href="/" class="logo">
-        <h1>LOGO</h1>
+  				<img src="{{ url_for('static', filename='img/logo.jpg') }}" width="100%">          
 			</a>
-
 			<ul>
 				<li class="title">Navigation</li>
 				<li><a href="/">Home</a></li>
 				<li><a href="/attorneys">Add Attorney</a></li>
 				<li><a href="/view">View All Attorneys</a></li>
+				{% if current_user.is_authenticated() %}
+				<li><a href="/upload">Upload a Spreadsheet</a></li>
+				<li><a href="/admin">Administration</a></li>
+				{% endif %}
 			</ul>
 
 			<p class="foot">
-				Hello <b>John Doe</b><br>
-				<a href="#">My Account</a> &bullet; <a href="#">Logout</a>
+				{% if current_user.is_authenticated() %}Hello {{ current_user.id }}!<br><a href="/logout">Logout</a>
+				{% else %}
+				<a href="/login">Login</a>
+				{% endif %}
 			</p>
 		</div>
 
@@ -49,7 +54,7 @@
       
 			<div class="flakes-mobile-top-bar">
 				<a href="" class="logo-wrap">
-  				<img src="{{ url_for('static', filename='img/logo.png') }}" height="30px">          
+  				<img src="{{ url_for('static', filename='img/logo.jpg') }}" height="30px">          
 				</a>
 
 				<a href="" class="navigation-expand-target">
@@ -59,6 +64,15 @@
 			</div>
 
 			<div class="view-wrap">
+			{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
         {% block body %}{% endblock %}
 			</div>
 		</div>
@@ -74,8 +88,6 @@
 	<script src="{{ url_for('static', filename='bower_components/gridforms/gridforms/gridforms.js') }}"></script>
 	<script src="{{ url_for('static', filename='bower_components/jquery-ui/jquery-ui.min.js') }}"></script>
 	<script src="{{ url_for('static', filename='js/autoComplt.js') }}"></script>
-
-
   <script src="{{ url_for('static', filename='js/base.js') }}"></script>
   <script src="{{ url_for('static', filename='js/utils.js') }}"></script>
   {% endblock %}

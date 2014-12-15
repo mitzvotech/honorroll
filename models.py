@@ -1,6 +1,6 @@
 from mongokit import *
 import datetime
-import pymongo
+from bson.objectid import ObjectId
 
 connection = Connection()
 MONGODB_HOST = 'localhost'
@@ -39,17 +39,4 @@ class Attorney(Document):
 	def __repr__(self):
 		return '%s %s %s (%s)' % (self.first_name, self.middle_initial, self.last_name, self.email_address)
 
-@connection.register
-class User(Document):
-    structure = {
-        'name': unicode,
-        'email': unicode,
-    }
-    validators = {
-    }
-    use_dot_notation = True
-    def __repr__(self):
-        return '<User %r>' % (self.name)
-
-connection.register([Attorney, User])
-
+connection.register([Attorney])

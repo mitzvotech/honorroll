@@ -1,13 +1,17 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, flash
 from mongokit import *
 from flask import json
 from bson.json_util import dumps
 from bson.objectid import ObjectId
 from flask_wtf.csrf import CsrfProtect
+import bcrypt
+from flask.ext.login import LoginManager, login_user, logout_user, current_user, login_required
+from pymongo import Connection
 
-from flask.ext import admin
-from forms import newAttorneyForm, newHonorForm
+from forms import newAttorneyForm, newHonorForm, BulkForm, LoginForm, RegisterForm, AdminAttorneyForm
 from models import *
+
+
 
 app = Flask(__name__)
 CsrfProtect(app)
@@ -48,6 +52,21 @@ def honor(attorney_id=None):
 		return redirect(url_for('view'))
 	return render_template('honor.html', form=form, attorney=attorney)
 
+from werkzeug import secure_filename
+from utils import load_attorneys_from_csv
+@app.route('/upload', methods=["GET","POST"])
+@login_required
+def upload():
+    form = BulkForm()
+    if form.validate_on_submit():
+        filename = secure_filename(form.f.data.filename)
+        form.f.data.save('uploads/' + filename)
+        if load_attorneys_from_csv('uploads/' + filename):
+            return redirect('view')
+    else:
+        filename = None
+    return render_template('upload.html', form=form, filename=filename)
+
 @app.route('/api/attorneys', methods=["GET"])
 def attorneys():
 	attorneys = connection.Attorney.find()
@@ -57,31 +76,126 @@ def attorneys():
 def organizations():
 	return dumps(json.load(open('data/organizations.json', 'r')))
 
-# Admin Pages
-from wtforms import form, fields
-from flask.ext.admin.form import Select2Widget
-from flask.ext.admin.contrib.pymongo import ModelView, filters
-from flask.ext.admin.model.fields import InlineFormField, InlineFieldList
-import md5
 
-# User admin
-class UserForm(form.Form):
-    name = fields.TextField('Name')
-    email = fields.TextField('Email')
-    usertype = fields.SelectField(choices=[('superuser','superuser'),('admin','admin'),('firmuser','firmuser')], default="firmuser")
-    password = fields.PasswordField('Password')
+@app.route('/api/users', methods=["GET"])
+def users():
+	users = connection.honorroll.users.find()
+	return dumps(users)
+
+
+#### 
+# User Authentication
+####
+
+login_manager = LoginManager()
+login_manager.setup_app(app)
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User(user_id)
+
+class User(Document):
+    def __init__(self, user_id):
+        self.id = user_id.lower()
+        self.db = connection.honorroll.users
+        self.account = self.db.find_one({'uid': self.id})
+
+    def create(self):
+        self.db.insert({'uid': self.id})
+        self.account = self.db.find_one({'uid': self.id})
+
+    def save(self):
+        self.db.save(self.account)
+
+    def password_valid(self, pwd):
+        pwd_hash = self.account['password_hash']
+        return bcrypt.hashpw(pwd, pwd_hash) == pwd_hash
+
+    # The methods below are required by flask-login
+    def is_authenticated(self):
+        """Always return true - we don't do any account verification"""
+        return True
+
+    def is_active(self):
+        return True
+
+    def is_anonymous(self):
+        return False
+
+    def get_id(self):
+        return self.id
+
+@app.route("/register", methods=['GET', 'POST'])
+def register():
+    opts = {}
+    form = RegisterForm()
+    if form.validate_on_submit():
+        user = User(form.uid.data)
+        if user.account:
+            opts['username_exists'] = True
+            return render_template('register.html', opts=opts, form=form)
+        user.create()
+        pwd_hash = bcrypt.hashpw(form.password.data, bcrypt.gensalt())
+        user.account['password_hash'] = pwd_hash
+        user.account['email_address'] = form.email_address.data
+        user.save()
+        login_user(user)
+        return redirect(url_for('index'))
+    return render_template('register.html', form=form)
+
+@app.route("/login", methods=['GET', 'POST'])
+def login():
+    opts = {}
+    form = LoginForm()
+    next_page = request.args.get('next')
+    if form.validate_on_submit():
+        user = User(form.username.data)
+        if not user.account or not user.password_valid(form.password.data):
+            flash('invalid_username_or_password')
+            return render_template('login.html', form=form)
+        login_user(user)
+        return redirect(next_page or url_for('index'))
+    return render_template('login.html', form=form)
+
+@app.route("/logout")
+def logout():
+    logout_user()
+    return redirect(url_for('index'))
+
+login_manager.login_view = "login"
+
+
+###
+# Administration Pages
+###
+
+from flask.ext import admin
+from flask.ext.admin.contrib.pymongo import ModelView
+
+class AttorneyView(ModelView):
+    column_list = ('first_name', 'middle_initial', 'last_name','email_address','organization_name')
+    column_sortable_list = ('first_name', 'middle_initial', 'last_name','email_address','organization_name')
+
+    form = AdminAttorneyForm
+
+    def is_accessible(self):
+        return current_user.is_authenticated()
 
 class UserView(ModelView):
-    column_list = ('name', 'usertype', 'email', 'password')
-    # unicode(md5.new('password').hexdigest())	
-    column_sortable_list = ('name', 'usertype', 'email', 'password')
+    column_list = ('uid', 'email_address', 'password_hash')
+    column_sortable_list = ('uid', 'email_address','password_hash')
 
-    form = UserForm
+    form = RegisterForm
+
+    def is_accessible(self):
+        return current_user.is_authenticated()
+
 
 app.secret_key = 'test'
 
 if __name__ == "__main__":
     app.debug = True
-    admin = admin.Admin(app, name='Honor Roll')
-    admin.add_view(UserView(connection.honorroll.user, 'User'))
+    admin = admin.Admin(app, name='Honor Roll')#,base_template="admin.html")
+    admin.add_view(AttorneyView(connection.honorroll.attorneys, 'Attorneys'))
+    admin.add_view(UserView(connection.honorroll.users, 'Users'))
     app.run()
