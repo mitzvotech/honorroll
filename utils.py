@@ -2,6 +2,7 @@ import csv
 from models import *
 from datetime import datetime
 import codecs
+import json
 
 def unicode_csv_reader(unicode_csv_data, dialect=csv.excel, **kwargs):
     # csv.py doesn't do Unicode; encode temporarily as UTF-8:
@@ -37,4 +38,14 @@ def load_attorneys_from_csv(filename):
             print a 
             a.save()
             print "User Added"
+    return True
+
+def update_organizations(organization_name):
+    f = open('data/organizations.json', 'r+')
+    data = json.load(f)
+    if organization_name not in data:
+        data.append(organization_name)
+        out = json.dumps(sorted(data))
+        f.write(out)
+    f.close()
     return True

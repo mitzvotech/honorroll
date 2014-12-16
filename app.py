@@ -10,6 +10,7 @@ from pymongo import Connection
 
 from forms import newAttorneyForm, newHonorForm, BulkForm, LoginForm, RegisterForm, AdminAttorneyForm
 from models import *
+from utils import update_organizations
 
 app = Flask(__name__)
 CsrfProtect(app)
@@ -30,17 +31,24 @@ def view():
 @app.route("/attorneys", methods=["GET", "POST"])
 @app.route("/attorneys/<attorney_id>", methods=["GET", "POST"])
 def add(attorney_id=None):
-	if attorney_id == None:
-		attorney = connection.Attorney()
-	else:
-		attorney = connection.Attorney.find_one({'_id':ObjectId(attorney_id)})
-	form = newAttorneyForm(obj=attorney)
-	if form.validate_on_submit():
-		form.populate_obj(attorney)
-		# todo: check to see if the organization name exists in the json file and, if not, to append it to the list
-		atty = connection.Attorney.find_and_modify({'_id':ObjectId(attorney_id)}, update={'$set': attorney}, upsert=True, new=True)
-		return redirect(url_for('honor', attorney_id=atty._id))
-	return render_template("form.html", form=form)
+    if attorney_id == None:
+        attorney = connection.Attorney()
+    else:
+        attorney = connection.Attorney.find_one({'_id':ObjectId(attorney_id)})
+    form = newAttorneyForm(obj=attorney)
+    if form.validate_on_submit():
+		
+        # upsert the attorney information into the database
+        form.populate_obj(attorney)
+        atty = connection.Attorney.find_and_modify({'_id':ObjectId(attorney_id)}, update={'$set': attorney}, upsert=True, new=True)
+
+        # check to see if the organization name exists in the json file and, if not, to append it to the list
+        update_organizations(form.organization_name.data)
+
+        # go to the honor form to add an honors record
+        return redirect(url_for('honor', attorney_id=atty._id))
+
+    return render_template("form.html", form=form)
 
 @app.route("/honor/<attorney_id>", methods=["GET", "POST"])
 def honor(attorney_id=None):
@@ -126,6 +134,7 @@ class User(Document):
         return self.id
 
 @app.route("/register", methods=['GET', 'POST'])
+@login_required
 def register():
     opts = {}
     form = RegisterForm()
