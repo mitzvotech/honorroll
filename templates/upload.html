@@ -8,6 +8,8 @@
 
 {% block body %}
   <!-- <h1>Add an Attorney</h1> -->
+<h1>Bulk Upload</h1>
+<p>To upload many attorneys, please enter the data using <a href="{{ url_for('static', filename='docs/bulkattorneys.csv') }}">this csv template.</a>  
 <form action="{{request.path}}" method="POST" enctype="multipart/form-data">
     {{ form.hidden_tag() }}
     <fieldset>
