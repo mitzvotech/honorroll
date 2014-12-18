@@ -8,12 +8,20 @@ import bcrypt
 from flask.ext.login import LoginManager, login_user, logout_user, current_user, login_required
 from pymongo import Connection
 
+
+
 from forms import newAttorneyForm, newHonorForm, BulkForm, LoginForm, RegisterForm, AdminAttorneyForm
 from models import *
-from utils import update_organizations
+from utils import update_organizations, mail_bulk_csv
 
 app = Flask(__name__)
 CsrfProtect(app)
+
+from flask_sslify import SSLify
+sslify = SSLify(app)
+
+# from flask_mail import Mail
+# mail = Mail(app)
 
 ###
 # Defined Routes
@@ -62,10 +70,15 @@ def honor(attorney_id=None):
 		return redirect(url_for('view'))
 	return render_template('honor.html', form=form, attorney=attorney)
 
+
+### 
+# Upload a CSV of attorneys 
+### 
+
+# ToDo: change the template to allow for mail of bulkattorneys.csv
 from werkzeug import secure_filename
 from utils import load_attorneys_from_csv
 @app.route('/upload', methods=["GET","POST"])
-@login_required
 def upload():
     form = BulkForm()
     if form.validate_on_submit():

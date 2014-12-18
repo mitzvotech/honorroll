@@ -9,7 +9,8 @@
 {% block body %}
   <!-- <h1>Add an Attorney</h1> -->
 <h1>Bulk Upload</h1>
-<p>To upload many attorneys, please enter the data using <a href="{{ url_for('static', filename='docs/bulkattorneys.csv') }}">this csv template.</a>  
+<p>To upload multiple attorneys, please enter the data using <a href="{{ url_for('static', filename='docs/bulkattorneys.csv') }}">this csv template</a> using Excel or similar spreadsheet application, and email the completed spreadsheet to <a href="mailto:probonohonorroll@esq.io">probonohonorroll@esq.io</a>.</p>
+{% if current_user.is_authenticated() %}
 <form action="{{request.path}}" method="POST" enctype="multipart/form-data">
     {{ form.hidden_tag() }}
     <fieldset>
@@ -18,4 +19,5 @@
     </fieldset>
     <input type="submit">
 </form>
+{% endif %}
 {% endblock %}
