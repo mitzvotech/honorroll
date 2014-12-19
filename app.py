@@ -8,8 +8,6 @@ import bcrypt
 from flask.ext.login import LoginManager, login_user, logout_user, current_user, login_required
 from pymongo import Connection
 
-
-
 from forms import newAttorneyForm, newHonorForm, BulkForm, LoginForm, RegisterForm, AdminAttorneyForm
 from models import *
 from utils import update_organizations, mail_bulk_csv
@@ -216,11 +214,11 @@ class UserView(ModelView):
 from werkzeug.contrib.fixers import ProxyFix
 app.wsgi_app = ProxyFix(app.wsgi_app)
 
-app.secret_key = 'test'
+app.secret_key = os.environ['SECRET_KEY']
 port = int(os.environ.get('PORT', 5000))
 
 if __name__ == "__main__":
-    app.debug = True
+    app.debug = False
     admin = admin.Admin(app, name='Honor Roll')#,base_template="admin.html")
     admin.add_view(AttorneyView(db.attorneys, 'Attorneys'))
     admin.add_view(UserView(db.users, 'Users'))
