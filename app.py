@@ -49,7 +49,7 @@ def add(attorney_id=None):
         form.populate_obj(attorney)
         if attorney_id == None and check_new_email(attorney.email_address):
             flash(Markup("A user with that email address already exists. Please use this edit feature to make changes"))
-            return redirect(url_for(email_edit))
+            return redirect(url_for('email_edit'))
         else:
             atty = connection.Attorney.find_and_modify({'_id':ObjectId(attorney_id)}, update={'$set': attorney}, upsert=True, new=True)
 
@@ -111,7 +111,7 @@ def upload():
 
 @app.route('/api/attorneys', methods=["GET"])
 def attorneys():
-	attorneys = connection.Attorney.find(fields={"_id":False})
+	attorneys = connection.Attorney.find(fields={"_id":False, "email_address":False})
 	return dumps(attorneys)
 
 @app.route('/api/organizations', methods=["GET"])
