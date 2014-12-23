@@ -3,10 +3,10 @@ import datetime
 from bson.objectid import ObjectId
 import os
 
-# MONGODB_URI = os.environ["MONGOLAB_URI"]
+MONGODB_URI = os.environ["MONGOLAB_URI"]
 MONGODB_DB = os.environ["MONGOLAB_DB"]
-# connection = Connection(MONGODB_URI)
-connection = Connection()
+connection = Connection(MONGODB_URI)
+# connection = Connection()
 db = connection[MONGODB_DB]
 MONGODB_HOST = 'localhost'
 MONGODB_PORT = 27017
