@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block body %}
+  <!-- <h1>Add an Attorney</h1> -->
+
+  <div class="form-style-8">
+  <form class="" action="{{request.path}}" method="POST">
+    {{ form.hidden_tag() }}
+    <fieldset>
+        <legend>Look up by Email Address</legend>
+        <div data-row-span="1">
+            <div data-field-span="1">
+                <label>{{form.email_address.label}}</label>
+                {{form.email_address()}}
+            </div>
+        </div>
+    </fieldset>
+    <input type="submit">
+</form>
+</div>
+{% endblock %}

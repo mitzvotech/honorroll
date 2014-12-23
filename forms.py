@@ -37,3 +37,6 @@ class RegisterForm(Form):
 
 class BulkForm(Form):
     f = FileField('Upload the .csv file')
+
+class EmailEditForm(Form):
+    email_address = StringField(u'Email Address', [validators.required(), validators.Email()])

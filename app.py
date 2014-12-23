@@ -8,8 +8,9 @@ import bcrypt
 from flask.ext.login import LoginManager, login_user, logout_user, current_user, login_required
 from pymongo import Connection
 
-from forms import newAttorneyForm, newHonorForm, BulkForm, LoginForm, RegisterForm, AdminAttorneyForm
+from forms import newAttorneyForm, newHonorForm, BulkForm, LoginForm, RegisterForm, AdminAttorneyForm, EmailEditForm
 from models import *
+from lib.email import send_confirmation
 from utils import update_organizations, mail_bulk_csv
 
 app = Flask(__name__)
@@ -18,8 +19,8 @@ CsrfProtect(app)
 from flask_sslify import SSLify
 sslify = SSLify(app)
 
-# from flask_mail import Mail
-# mail = Mail(app)
+import mandrill
+mandrill_client = mandrill.Mandrill(os.environ.get("SMTP_USER_PWD"))
 
 ###
 # Defined Routes
@@ -51,6 +52,8 @@ def add(attorney_id=None):
         # check to see if the organization name exists in the json file and, if not, to append it to the list
         update_organizations(form.organization_name.data)
 
+        msg = send_confirmation(atty._id, atty.email_address)
+        result = mandrill_client.messages.send(message=msg)
         # go to the honor form to add an honors record
         return redirect(url_for('honor', attorney_id=atty._id))
 
@@ -68,6 +71,20 @@ def honor(attorney_id=None):
 		return redirect(url_for('view'))
 	return render_template('honor.html', form=form, attorney=attorney)
 
+@app.route("/email_edit", methods=["GET","POST"])
+def email_edit():
+    form = EmailEditForm()
+    if form.validate_on_submit():
+        attorney = connection.Attorney.find_one({"email_address":form.email_address.data})
+        if attorney == None:
+            flash('No email address found. Please try again.')
+            return render_template("email_edit.html", form=form)
+        else:
+            msg = send_confirmation(attorney._id, attorney.email_address)
+            result = mandrill_client.messages.send(message=msg)
+            return redirect(url_for('index'))
+    return render_template("email_edit.html", form=form)
+        
 
 ### 
 # Upload a CSV of attorneys 
@@ -90,7 +107,7 @@ def upload():
 
 @app.route('/api/attorneys', methods=["GET"])
 def attorneys():
-	attorneys = connection.Attorney.find()
+	attorneys = connection.Attorney.find(fields={"_id":False})
 	return dumps(attorneys)
 
 @app.route('/api/organizations', methods=["GET"])
@@ -218,11 +235,11 @@ class UserView(ModelView):
 from werkzeug.contrib.fixers import ProxyFix
 app.wsgi_app = ProxyFix(app.wsgi_app)
 
-app.secret_key = os.environ['SECRET_KEY']
+app.secret_key = os.environ.get('SECRET_KEY')
 port = int(os.environ.get('PORT', 5000))
 
 if __name__ == "__main__":
-    app.debug = False
+    app.debug = True
     admin = admin.Admin(app, name='Honor Roll')#,base_template="admin.html")
     admin.add_view(AttorneyView(db.attorneys, 'Attorneys'))
     admin.add_view(UserView(db.users, 'Users'))
