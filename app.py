@@ -170,7 +170,7 @@ class User(Document):
         return self.id
 
 @app.route("/register", methods=['GET', 'POST'])
-# @login_required
+@login_required
 def register():
     opts = {}
     form = RegisterForm()
