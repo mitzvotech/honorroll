@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, request, redirect, url_for, flash, Markup
 from mongokit import *
 from flask import json
 from bson.json_util import dumps
@@ -11,7 +11,7 @@ from pymongo import Connection
 from forms import newAttorneyForm, newHonorForm, BulkForm, LoginForm, RegisterForm, AdminAttorneyForm, EmailEditForm
 from models import *
 from lib.email import send_confirmation
-from utils import update_organizations, mail_bulk_csv
+from utils import update_organizations, mail_bulk_csv, check_new_email
 
 app = Flask(__name__)
 CsrfProtect(app)
@@ -47,7 +47,11 @@ def add(attorney_id=None):
 		
         # upsert the attorney information into the database
         form.populate_obj(attorney)
-        atty = connection.Attorney.find_and_modify({'_id':ObjectId(attorney_id)}, update={'$set': attorney}, upsert=True, new=True)
+        if attorney_id == None and check_new_email(attorney.email_address):
+            flash(Markup("A user with that email address already exists. Please use this edit feature to make changes"))
+            return redirect(url_for(email_edit))
+        else:
+            atty = connection.Attorney.find_and_modify({'_id':ObjectId(attorney_id)}, update={'$set': attorney}, upsert=True, new=True)
 
         # check to see if the organization name exists in the json file and, if not, to append it to the list
         update_organizations(form.organization_name.data)

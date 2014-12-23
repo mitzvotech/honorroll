@@ -50,6 +50,12 @@ def load_attorneys_from_csv(filename):
             print "User Added"
     return True
 
+def check_new_email(email_address):
+    if connection.Attorney.find_one({'email_address':email_address}) != None:
+        return True
+    else:
+        return False
+
 def update_organizations(organization_name):
     connection.Organization.find_and_modify({'organization_name':organization_name}, update={'$set': {'organization_name':organization_name}}, upsert=True, new=True)
     return True
