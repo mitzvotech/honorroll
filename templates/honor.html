@@ -6,12 +6,25 @@
     {{ form.hidden_tag() }}
     <fieldset>
         <legend>Honor Info</legend>
-        <div data-row-span="3">
+        <div data-row-span="2">
             <div data-field-span="1"><label>{{form.year.label}}</label>{{form.year()}}</div>
             <div data-field-span="1"><label>{{form.honor_choice.label}}</label>{{form.honor_choice()}}</div>
-            <div data-field-span="1"><label>{{form.rule_49_choice.label}}</label>{{form.rule_49_choice()}}</div>
         </div>
+        <div data-row-span="1">
+            <div data-field-span="1"><label>{{form.rule_49_choice.label}}</label>
+            <!-- {{form.rule_49_choice(style="")}} -->
+            <ul>{% for f in form.rule_49_choice %}
+            <li>{{f}} {{f.label(style="display:inline")}}</li>
+            {% endfor %}
+            </ul>
+            </div>
+        </div>
+        <div data-row-span="1">
+            <div data-field-span="1"><label>Affirmation</label>
+            <p>I hereby declare that in 2014, I provided legal services  at no fee and without expectation of fee to one or more of the following: (i) persons of limited means or charitable, religious, civic, community, governmental, or educational organizations in matters which are designed primarily to address the needs of persons of limited means; (ii) individuals, groups, or organizations seeking to secure or protect civil rights, civil liberties, or public rights; and (iii) charitable, religious, civic, community, governmental, or educational organizations in matters in furtherance of their organizational purposes, where the payment of standard legal fees would significantly deplete the organization's economic resources or would be otherwise inappropriate.</p>
+            </div>
+        </div>
+        <input type="submit">
     </fieldset>
-    <input type="submit">
 </form>
 {% endblock %}

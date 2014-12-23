@@ -10,11 +10,13 @@ class newAttorneyForm(Form):
     email_address = StringField(u'Email Address', [validators.Email(), validators.required()])
     organization_name = StringField(u'Organization', [validators.required()])
 
+choices = [('dc','During the performance of my pro bono work I was a D.C. Bar member.'),('application','During the performance of my pro bono work I was not a D.C. Bar member, but had submitted an application for admission.'), ('us','During the performance of my pro bono work I was not a D.C. Bar member, but was an employee of the United States.'), ('federal','During the performance of my pro bono work I was not a D.C. Bar member, but was a member in good standing of the highest court of any state and provided pro bono legal services to D.C. residents solely before a U.S. special court, department, or agency.'), ('program','During the performance of my pro bono work I was not a D.C. Bar member, but provided legal services to D.C. residents as part of a special program for representation or assistance that was expressly authorized by the D.C. Court of Appeals or Superior Court.')]
+
 class newHonorForm(Form):
-	year = StringField(u'Year', [validators.required()], default=datetime.now().year)
-	honor_choice = RadioField(u'', choices=[('Honors','More than 50 hours of pro bono'),('High Honors','More than 100 hours of pro bono')])
-	rule_49_choice = SelectField(u'Rule 49', choices=[('dc', 'Licensed to practice in DC'), ('49', 'Something Else')])
-	date_modified = HiddenField(default=datetime.now)
+    year = StringField(u'Year', [validators.required()], default=datetime.now().year)
+    honor_choice = RadioField(u'', choices=[('Honors','I performed 50 hours or more of pro bono services'),('High Honors','I performed 100 hours or more of pro bono services')])
+    rule_49_choice = RadioField(u'Rule 49', choices=choices)
+    date_modified = HiddenField(default=datetime.now)
 
 class AdminAttorneyForm(Form):
     first_name = StringField(u'First Name', [validators.required()])
