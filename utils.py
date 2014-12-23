@@ -56,6 +56,7 @@ def update_organizations(organization_name):
     if organization_name not in data:
         data.append(organization_name)
         out = json.dumps(sorted(data))
+        f.seek(0)
         f.write(out)
     f.close()
     return True
