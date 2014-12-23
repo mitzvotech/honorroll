@@ -69,7 +69,12 @@ def honor(attorney_id=None):
 	form = newHonorForm()
 	if form.validate_on_submit():
 		# todo: Add a check to see whether the year is already there, and do an upsert instead of an append
-		attorney["records"].append(form.data)
+		records = attorney["records"]
+        for rec in records:
+            if form.year.data == rec['year']:
+                records.pop(rec)
+            records.append(form.data)
+        attorney["records"] = records
 		attorney["records"][len(attorney["records"])-1]["method_added"] = u"website"
 		attorney.save()
 		return redirect(url_for('view'))
