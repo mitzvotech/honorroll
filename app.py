@@ -248,7 +248,7 @@ app.secret_key = os.environ.get('SECRET_KEY')
 port = int(os.environ.get('PORT', 5000))
 
 if __name__ == "__main__":
-    app.debug = False
+    app.debug = True
     admin = admin.Admin(app, name='Honor Roll')#,base_template="admin.html")
     admin.add_view(AttorneyView(db.attorneys, 'Attorneys'))
     admin.add_view(UserView(db.users, 'Users'))
