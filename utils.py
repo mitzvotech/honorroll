@@ -51,12 +51,5 @@ def load_attorneys_from_csv(filename):
     return True
 
 def update_organizations(organization_name):
-    f = open('data/organizations.json', 'r+')
-    data = json.load(f)
-    if organization_name not in data:
-        data.append(organization_name)
-        out = json.dumps(sorted(data))
-        f.seek(0)
-        f.write(out)
-    f.close()
+    connection.Organization.find_and_modify({'organization_name':organization_name}, update={'$set': {'organization_name':organization_name}}, upsert=True, new=True)
     return True

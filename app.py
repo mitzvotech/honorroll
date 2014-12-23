@@ -95,7 +95,11 @@ def attorneys():
 
 @app.route('/api/organizations', methods=["GET"])
 def organizations():
-	return dumps(json.load(open('data/organizations.json', 'r')))
+    organizations = connection.Organization.find(fields={"_id":False})
+    out = []
+    for org in organizations:
+        out.append(org["organization_name"])
+    return dumps(sorted(out))
 
 @app.route('/api/users', methods=["GET"])
 def users():

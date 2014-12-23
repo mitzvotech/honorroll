@@ -43,4 +43,17 @@ class Attorney(Document):
 	def __repr__(self):
 		return '%s %s %s (%s)' % (self.first_name, self.middle_initial, self.last_name, self.email_address)
 
-connection.register([Attorney])
+@connection.register
+class Organization(Document):
+	__collection__ = 'organizations'
+	__database__ = MONGODB_DB
+	structure = {
+		'organization_name': unicode
+	}
+	use_dot_notation = True
+	
+	def __repr__(self):
+		return '%s' % (self.organization_name)
+
+
+connection.register([Attorney, Organization])
