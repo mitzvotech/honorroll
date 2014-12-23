@@ -57,7 +57,7 @@ def add(attorney_id=None):
         update_organizations(form.organization_name.data)
 
         # check to see if the user is coming from the email.
-        if request.args.get('from_email') != "true":
+        if not request.args.get('from_email') == "true":
             msg = send_confirmation(atty._id, atty.email_address)
             result = mandrill_client.messages.send(message=msg)
         # go to the honor form to add an honors record
