@@ -56,8 +56,10 @@ def add(attorney_id=None):
         # check to see if the organization name exists in the json file and, if not, to append it to the list
         update_organizations(form.organization_name.data)
 
-        msg = send_confirmation(atty._id, atty.email_address)
-        result = mandrill_client.messages.send(message=msg)
+        # check to see if the user is coming from the email.
+        if request.args.get('from_email', '') != "true":
+            msg = send_confirmation(atty._id, atty.email_address)
+            result = mandrill_client.messages.send(message=msg)
         # go to the honor form to add an honors record
         return redirect(url_for('honor', attorney_id=atty._id))
 
