@@ -65,20 +65,20 @@ def add(attorney_id=None):
 
 @app.route("/honor/<attorney_id>", methods=["GET", "POST"])
 def honor(attorney_id=None):
-	attorney = connection.Attorney.find_one({'_id':ObjectId(attorney_id)})
-	form = newHonorForm()
-	if form.validate_on_submit():
-		# todo: Add a check to see whether the year is already there, and do an upsert instead of an append
-		records = attorney["records"]
+    attorney = connection.Attorney.find_one({'_id':ObjectId(attorney_id)})
+    form = newHonorForm()
+    if form.validate_on_submit():
+        # todo: Add a check to see whether the year is already there, and do an upsert instead of an append
+        records = attorney["records"]
         for rec in records:
             if form.year.data == rec['year']:
                 records.pop(rec)
             records.append(form.data)
         attorney["records"] = records
-		attorney["records"][len(attorney["records"])-1]["method_added"] = u"website"
-		attorney.save()
-		return redirect(url_for('view'))
-	return render_template('honor.html', form=form, attorney=attorney)
+        attorney["records"][len(attorney["records"])-1]["method_added"] = u"website"
+        attorney.save()
+        return redirect(url_for('view'))
+    return render_template('honor.html', form=form, attorney=attorney)
 
 @app.route("/email_edit", methods=["GET","POST"])
 def email_edit():
