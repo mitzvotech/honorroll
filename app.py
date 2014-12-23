@@ -57,12 +57,14 @@ def add(attorney_id=None):
         update_organizations(form.organization_name.data)
 
         # check to see if the user is coming from the email.
-        if not request.args.get('from_email') == "true":
+        if request.args.get('from_email','false') == "true":
+            return redirect(url_for('honor', attorney_id=atty._id))
+        else:
             msg = send_confirmation(atty._id, atty.email_address)
             result = mandrill_client.messages.send(message=msg)
+        
         # go to the honor form to add an honors record
         return redirect(url_for('honor', attorney_id=atty._id))
-
     return render_template("form.html", form=form)
 
 @app.route("/honor/<attorney_id>", methods=["GET", "POST"])
