@@ -13,7 +13,7 @@ class newAttorneyForm(Form):
 choices = [('dc','During the performance of my pro bono work I was a D.C. Bar member.'),('application','During the performance of my pro bono work I was not a D.C. Bar member, but had submitted an application for admission.'), ('us','During the performance of my pro bono work I was not a D.C. Bar member, but was an employee of the United States.'), ('federal','During the performance of my pro bono work I was not a D.C. Bar member, but was a member in good standing of the highest court of any state and provided pro bono legal services to D.C. residents solely before a U.S. special court, department, or agency.'), ('program','During the performance of my pro bono work I was not a D.C. Bar member, but provided legal services to D.C. residents as part of a special program for representation or assistance that was expressly authorized by the D.C. Court of Appeals or Superior Court.')]
 
 class newHonorForm(Form):
-    year = StringField(u'Year', [validators.required()], default=str(int(datetime.now().year) - 1))
+    year = StringField(u'Year', [validators.required()], default="2014")#str(int(datetime.now().year) - 1))
     honor_choice = RadioField(u'', choices=[('Honors','I performed 50 hours or more of pro bono services'),('High Honors','I performed 100 hours or more of pro bono services')])
     rule_49_choice = RadioField(u'Rule 49', choices=choices)
     date_modified = HiddenField(default=datetime.now)
