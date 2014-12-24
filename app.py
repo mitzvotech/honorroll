@@ -30,6 +30,10 @@ mandrill_client = mandrill.Mandrill(os.environ.get("SMTP_USER_PWD"))
 def index():
     return render_template("index.html")
 
+@app.route("/thanks")
+def thanks():
+    return render_template("thanks.html")
+
 @app.route("/view")
 def view():
 	attorneys = connection.Attorney.find()
@@ -83,7 +87,7 @@ def honor(attorney_id=None):
         attorney["records"] = records
         attorney["records"][len(attorney["records"])-1]["method_added"] = u"website"
         attorney.save()
-        return redirect(url_for('view'))
+        return redirect(url_for('thanks'))
     return render_template('honor.html', form=form, attorney=attorney)
 
 @app.route("/email_edit", methods=["GET","POST"])
