@@ -57,9 +57,11 @@ def add(attorney_id=None):
         update_organizations(form.organization_name.data)
 
         # check to see if the user is coming from the email.
-        if request.args.get('from_email','false') == "true":
+        if attorney_id != None:
+            # Assuming you know the url, don't send a confirmation email
             return redirect(url_for('honor', attorney_id=atty._id))
         else:
+            # But if you *don't* know the url, send a confirmation email
             msg = send_confirmation(atty._id, atty.email_address)
             result = mandrill_client.messages.send(message=msg)
         
@@ -252,7 +254,7 @@ app.secret_key = os.environ.get('SECRET_KEY')
 port = int(os.environ.get('PORT', 5000))
 
 if __name__ == "__main__":
-    app.debug = False
+    app.debug = os.environ.get('ENV_DEBUG',False)
     admin = admin.Admin(app, name='Honor Roll')#,base_template="admin.html")
     admin.add_view(AttorneyView(db.attorneys, 'Attorneys'))
     admin.add_view(UserView(db.users, 'Users'))
