@@ -2,11 +2,24 @@
 
 {% block extra_css %}
 <style type="text/css">
+.required {
+    color: #f00;
+}
 </style>
 {% endblock %}
 
 
 {% block body %}
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
   <!-- <h1>Add an Attorney</h1> -->
   <div class="form-style-8">
   <form class="grid-form" action="{{request.path}}" method="POST">
@@ -14,17 +27,17 @@
     <fieldset>
         <legend>Attorney Information</legend>
         <div data-row-span="7">
-            <div data-field-span="3"><label>{{form.first_name.label}}</label>{{form.first_name()}}</div>
-            <div data-field-span="1"><label>{{form.middle_initial.label}}</label>{{form.middle_initial()}}</div>
-            <div data-field-span="3"><label>{{form.last_name.label}}</label>{{form.last_name()}}</div>
+            <div data-field-span="3"><label>{{form.first_name.label}}{% if form.first_name.flags.required %}<span class="required">* Required</span>{% endif %}</label>{{form.first_name()}}</div>
+            <div data-field-span="1"><label>{{form.middle_initial.label}}{% if form.middle_initial.flags.required %}<span class="required">* Required</span>{% endif %}</label>{{form.middle_initial()}}</div>
+            <div data-field-span="3"><label>{{form.last_name.label}}{% if form.last_name.flags.required %}<span class="required">* Required</span>{% endif %}</label>{{form.last_name()}}</div>
         </div>
         <div data-row-span="2">
             <div data-field-span="1">
-                <label>{{form.email_address.label}}</label>
+                <label>{{form.email_address.label}}{% if form.email_address.flags.required %}<span class="required">* Required</span>{% endif %}</label>
                 {{form.email_address()}}
             </div>
             <div data-field-span="1">
-                <label>{{form.organization_name.label}}</label>
+                <label>{{form.organization_name.label}}{% if form.organization_name.flags.required %}<span class="required">* Required</span>{% endif %}</label>
                 {{form.organization_name}}
             </div>
         </div>

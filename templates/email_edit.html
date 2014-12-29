@@ -10,7 +10,7 @@
         <legend>Look up by Email Address</legend>
         <div data-row-span="1">
             <div data-field-span="1">
-                <label>{{form.email_address.label}}</label>
+                <label>{{form.email_address.label}} {% if form.email_address.flags.required %}<span class="required">* Required</span>{% endif %}</label>
                 {{form.email_address()}}
             </div>
         </div>

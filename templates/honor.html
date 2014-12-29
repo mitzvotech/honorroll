@@ -7,11 +7,11 @@
     <fieldset>
         <legend>Honor Information</legend>
         <div data-row-span="2">
-            <div data-field-span="1"><label>{{form.year.label}}</label>{{form.year()}}</div>
-            <div data-field-span="1"><label>{{form.honor_choice.label}}</label>{{form.honor_choice()}}</div>
+            <div data-field-span="1"><label>{{form.year.label}}{% if form.year.flags.required %}<span class="required">* Required</span>{% endif %}</label>{{form.year()}}</div>
+            <div data-field-span="1"><label>{{form.honor_choice.label}}{% if form.honor_choice.flags.required %}<span class="required">* Required</span>{% endif %}</label>{{form.honor_choice()}}</div>
         </div>
         <div data-row-span="1">
-            <div data-field-span="1"><label>{{form.rule_49_choice.label}}</label>
+            <div data-field-span="1"><label>{{form.rule_49_choice.label}}{% if form.rule_49_choice.flags.required %}<span class="required">* Required</span>{% endif %}</label>
             <!-- {{form.rule_49_choice(style="")}} -->
             <ul>{% for f in form.rule_49_choice %}
             <li>{{f}} {{f.label(style="display:inline")}}</li>
