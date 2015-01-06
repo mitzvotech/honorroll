@@ -6,7 +6,9 @@
 <table id="honorroll" class="display" cellspacing="0" width="100%">
         <thead>
             <tr>
-                <th>Name</th>
+                <th>First Name</th>
+                <th>Middle Initial</th>
+                <th>Last Name</th>
                 <th>Firm/Agency</th>
                 <th>Year</th>
                 <th>Honors</th>
@@ -17,7 +19,9 @@
         {% for attorney in attorneys %}
                 {% if attorney.records | length >= 1 %}
             <tr>
-                <td>{{attorney.first_name}}{% if attorney.middle_initial%} {{attorney.middle_initial}} {% endif%} {{attorney.last_name}}</td>
+                <td>{{attorney.first_name}}</td>
+                <td>{{attorney.middle_initial}}</td>
+                <td>{{attorney.last_name}}</td>
                 <td>{{attorney.organization_name}}</td>
                 <td>{{attorney.records[0].year}}</td>
                 <td>{{attorney.records[0].honor_choice}}</td>
@@ -32,7 +36,7 @@
 <script type="text/javascript" src='//cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js'></script>
 <script type="text/javascript">
     $(document).ready(function() {
-    $('#honorroll').DataTable();
+    $('#honorroll').DataTable({'order':[[2,'asc'],[0,'asc']]});
     });
 </script>
 {% endblock %}
