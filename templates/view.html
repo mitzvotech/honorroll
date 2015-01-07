@@ -22,7 +22,7 @@
                 <td>{{attorney.first_name}}</td>
                 <td>{{attorney.middle_initial}}</td>
                 <td>{{attorney.last_name}}</td>
-                <td>{{attorney.organization_name}}</td>
+                <td>{{attorney.organization_name|safe}}</td>
                 <td>{{attorney.records[0].year}}</td>
                 <td>{{attorney.records[0].honor_choice}}</td>
             </tr>
