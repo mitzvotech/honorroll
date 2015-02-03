@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block body %}
+  <h1>Register</h1>
+  <form class="" action="{{request.path}}" method="POST">
+    {{ form.hidden_tag() }}
+    <fieldset>
+        <legend>Register</legend>
+            <ul>
+            <li><label>{{form.uid.label}}</label>{{form.uid()}}</li>
+            <li><label>{{form.email_address.label}}</label>{{form.email_address()}}</li>
+            <li><label>{{form.password.label}}</label>{{form.password()}}</li>
+            </ul>
+    </fieldset>
+    <button name="submit" type="submit">Submit</button>
+</form>
+
+{% for field in form.errors %}
+{% for error in form.errors[field] %}
+    <div class="alert alert-error">
+        <strong>Error!</strong> {{error}}
+    </div>
+{% endfor %}
+{% endfor %}
+{% endblock %}

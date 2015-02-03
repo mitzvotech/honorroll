@@ -1,0 +1,74 @@
+{% extends "layout.html" %}
+
+{% block extra_css %}
+<style type="text/css">
+.required {
+    color: #f00;
+}
+</style>
+{% endblock %}
+
+
+{% block body %}
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+<h1>Register for the Capital Pro Bono Honor Roll</h1>
+<p>On this first page, you will be asked to submit your name, email address and firm affiliation (if any).* Once you click submit, you will be directed to a second page at which you will certify additional information that is necessary for inclusion in the Capital Pro Bono Honor Roll.</p>
+<p>* Federal government attorneys should not identify their agency, but instead should select "Federal Government Attorney".</p>
+  <div class="form-style-8">
+  <form class="grid-form" action="{{request.path}}" method="POST">
+    {{ form.hidden_tag() }}
+    <fieldset>
+        <legend>Attorney Information</legend>
+        <div data-row-span="7">
+            <div data-field-span="3"><label>{{form.first_name.label}}{% if form.first_name.flags.required %}<span class="required">* Required</span>{% endif %}</label>{{form.first_name()}}</div>
+            <div data-field-span="1"><label>{{form.middle_initial.label}}{% if form.middle_initial.flags.required %}<span class="required">* Required</span>{% endif %}</label>{{form.middle_initial()}}</div>
+            <div data-field-span="3"><label>{{form.last_name.label}}{% if form.last_name.flags.required %}<span class="required">* Required</span>{% endif %}</label>{{form.last_name()}}</div>
+        </div>
+        <div data-row-span="2">
+            <div data-field-span="1">
+                <label>{{form.email_address.label}}{% if form.email_address.flags.required %}<span class="required">* Required</span>{% endif %}</label>
+                {{form.email_address()}}
+            </div>
+            <div data-field-span="1">
+                <label>{{form.organization_name.label}}{% if form.organization_name.flags.required %}<span class="required">* Required</span>{% endif %}</label>
+                {{form.organization_name}}
+            </div>
+        </div>
+    </fieldset>
+    <button name="submit" type="submit">Submit</button>
+</form>
+</div>
+{% endblock %}
+{% block extra_js %}
+
+<script>
+$(function () {
+    $.getJSON('/api/organizations', function (data) {
+
+        var input = document.querySelector("input[name=organization_name]");
+        autoComplt.enable(input, {
+            // the hintsFetcher is your customized function which searchs the proper autocomplete hints based on the user's input value.
+            hintsFetcher : function (v, openList) {
+                var hints = [],
+                    names = data;
+                for (var i = 0; i < names.length; i++) {
+                    if (names[i].indexOf(v) >= 0) {
+                        hints.push(names[i]);
+                    }
+                }
+                openList(hints);
+            }
+        });
+    })
+})
+</script>
+{% endblock %}
