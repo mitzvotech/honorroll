@@ -3,10 +3,10 @@ import datetime
 from bson.objectid import ObjectId
 import os
 
-MONGODB_URI = os.environ["MONGOLAB_URI"]
-MONGODB_DB = os.environ["MONGOLAB_DB"]
-connection = Connection(MONGODB_URI)
-# connection = Connection()
+#MONGODB_URI = os.environ["MONGOLAB_URI"]
+MONGODB_DB = os.environ.get("MONGOLAB_DB",'honorroll')
+#connection = Connection(MONGODB_URI)
+connection = Connection()
 db = connection[MONGODB_DB]
 MONGODB_HOST = 'localhost'
 MONGODB_PORT = 27017
@@ -40,7 +40,7 @@ class Attorney(Document):
         # 'email': max_length(120)
     }
 	use_dot_notation = True
-	
+
 	def __repr__(self):
 		return '%s %s %s (%s)' % (self.first_name, self.middle_initial, self.last_name, self.email_address)
 
@@ -52,7 +52,7 @@ class Organization(Document):
 		'organization_name': unicode
 	}
 	use_dot_notation = True
-	
+
 	def __repr__(self):
 		return '%s' % (self.organization_name)
 

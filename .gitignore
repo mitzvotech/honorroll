@@ -2,3 +2,4 @@ env/
 *.pyc
 .env
 .DS_Store
+**/.cache

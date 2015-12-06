@@ -1,5 +1,5 @@
 import csv
-from models import *
+#from models import *
 from datetime import datetime
 import codecs
 import json
@@ -45,9 +45,9 @@ def load_attorneys_from_csv(filename):
                 'method_added': u'bulk'
             }
             a['records'].append(record)
-            print a 
+            print (a)
             a.save()
-            print "User Added"
+            print ("User Added")
     return True
 
 def check_new_email(email_address):

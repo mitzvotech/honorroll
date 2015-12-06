@@ -1,26 +1,28 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, Markup
-from mongokit import *
+#from mongokit import Connection
 from flask import json
 from bson.json_util import dumps
 from bson.objectid import ObjectId
 from flask_wtf.csrf import CsrfProtect
 import bcrypt
 from flask.ext.login import LoginManager, login_user, logout_user, current_user, login_required
-from pymongo import Connection
+from flask.ext.pymongo import PyMongo
+#from pymongo import Connection
 
-from forms import newAttorneyForm, newHonorForm, BulkForm, LoginForm, RegisterForm, AdminAttorneyForm, EmailEditForm
-from models import *
-from lib.email import send_confirmation
-from utils import update_organizations, mail_bulk_csv, check_new_email
+from .forms import newAttorneyForm, newHonorForm, BulkForm, LoginForm, RegisterForm, AdminAttorneyForm, EmailEditForm
+#from .models import *
+from .lib.email import send_confirmation
+from .utils import update_organizations, mail_bulk_csv, check_new_email
 
 app = Flask(__name__)
 CsrfProtect(app)
+connection = PyMongo(app)
 
 from flask_sslify import SSLify
 sslify = SSLify(app)
 
 import mandrill
-mandrill_client = mandrill.Mandrill(os.environ.get("SMTP_USER_PWD"))
+mandrill_client = mandrill.Mandrill(os.environ.get("SMTP_USER_PWD",""))
 
 ###
 # Defined Routes
@@ -52,7 +54,7 @@ def add(attorney_id=None):
         attorney = connection.Attorney.find_one({'_id':ObjectId(attorney_id)})
     form = newAttorneyForm(obj=attorney)
     if form.validate_on_submit():
-		
+
         # upsert the attorney information into the database
         form.populate_obj(attorney)
         if attorney_id == None and check_new_email(attorney.email_address):
@@ -72,7 +74,7 @@ def add(attorney_id=None):
             # But if you *don't* know the url, send a confirmation email
             msg = send_confirmation(atty._id, atty.email_address)
             result = mandrill_client.messages.send(message=msg)
-        
+
         # go to the honor form to add an honors record
         return redirect(url_for('honor', attorney_id=atty._id))
     return render_template("form.html", form=form)
@@ -107,11 +109,11 @@ def email_edit():
             result = mandrill_client.messages.send(message=msg)
             return redirect(url_for('index'))
     return render_template("email_edit.html", form=form)
-        
 
-### 
-# Upload a CSV of attorneys 
-### 
+
+###
+# Upload a CSV of attorneys
+###
 
 # ToDo: change the template to allow for mail of bulkattorneys.csv
 from werkzeug import secure_filename
@@ -146,7 +148,7 @@ def users():
 	users = db.users.find()
 	return dumps(users)
 
-#### 
+####
 # User Authentication
 ####
 
@@ -258,7 +260,7 @@ class UserView(ModelView):
 from werkzeug.contrib.fixers import ProxyFix
 app.wsgi_app = ProxyFix(app.wsgi_app)
 
-app.secret_key = os.environ.get('SECRET_KEY')
+app.secret_key = os.environ.get('SECRET_KEY','123456')
 port = int(os.environ.get('PORT', 5000))
 
 if __name__ == "__main__":
