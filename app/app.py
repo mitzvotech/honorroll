@@ -1,73 +1,99 @@
-from flask import Flask, render_template, request, redirect, url_for, flash, Markup
-#from mongokit import Connection
-from flask import json
+from flask import (
+    Flask, render_template, request, redirect, url_for, flash, Markup, json
+)
 from bson.json_util import dumps
 from bson.objectid import ObjectId
 from flask_wtf.csrf import CsrfProtect
+import os
 import bcrypt
-from flask.ext.login import LoginManager, login_user, logout_user, current_user, login_required
+from flask.ext.login import (
+    LoginManager, login_user, logout_user, current_user, login_required
+)
 from flask.ext.pymongo import PyMongo
-#from pymongo import Connection
 
-from .forms import newAttorneyForm, newHonorForm, BulkForm, LoginForm, RegisterForm, AdminAttorneyForm, EmailEditForm
-#from .models import *
+from .forms import (
+    newAttorneyForm, newHonorForm, BulkForm, LoginForm, RegisterForm,
+    AdminAttorneyForm, EmailEditForm
+)
+from .models import *
 from .lib.email import send_confirmation
-from .utils import update_organizations, mail_bulk_csv, check_new_email
-
-app = Flask(__name__)
-CsrfProtect(app)
-connection = PyMongo(app)
-
-from flask_sslify import SSLify
-sslify = SSLify(app)
-
+from .utils import (
+    update_organizations, mail_bulk_csv, check_new_email,
+    load_attorneys_from_csv
+)
+# from flask_sslify import SSLify
 import mandrill
-mandrill_client = mandrill.Mandrill(os.environ.get("SMTP_USER_PWD",""))
+
+from werkzeug import secure_filename
+
+from flask.ext import admin
+from flask.ext.admin.contrib.pymongo import ModelView
+
+# from werkzeug.contrib.fixers import ProxyFix
+
+
+def create_app(config_name='default'):
+    app = Flask(__name__)
+    configure_blueprints(app)
+    return app
+
+
+def configure_blueprints(app):
+    """Configure application blueprints."""
+    from .frontend.views import frontend
+    app.register_blueprint(frontend)
+
+    return None
+
+app = create_app()
+
+MONGODB_URI = os.environ.get("MONGOLAB_URI", 'mongodb://localhost/honorroll')
+MONGODB_DB = os.environ.get("MONGOLAB_DB", 'honorroll')
+connect(MONGODB_URI)
+
+CsrfProtect(app)
+# sslify = SSLify(app)
+
+mandrill_client = mandrill.Mandrill(os.environ.get("SMTP_USER_PWD", ""))
 
 ###
 # Defined Routes
 ###
 
-@app.route("/")
-def index():
-    return render_template("index.html")
-
-@app.route("/questions")
-def questions():
-    return render_template("questions.html")
-
-@app.route("/thanks")
-def thanks():
-    return render_template("thanks.html")
 
 @app.route("/view")
 def view():
-	attorneys = connection.Attorney.find()
-	return render_template("view.html", attorneys=attorneys)
+    attorneys = connection.Attorney.find()
+    return render_template("view.html", attorneys=attorneys)
+
 
 @app.route("/attorneys", methods=["GET", "POST"])
 @app.route("/attorneys/<attorney_id>", methods=["GET", "POST"])
 def add(attorney_id=None):
-    if attorney_id == None:
+    if attorney_id is None:
         attorney = connection.Attorney()
     else:
-        attorney = connection.Attorney.find_one({'_id':ObjectId(attorney_id)})
+        attorney = connection.Attorney.find_one({'_id': ObjectId(attorney_id)})
     form = newAttorneyForm(obj=attorney)
     if form.validate_on_submit():
 
         # upsert the attorney information into the database
         form.populate_obj(attorney)
-        if attorney_id == None and check_new_email(attorney.email_address):
-            flash(Markup("A user with that email address already exists. Please use this edit feature to make changes"))
+        if attorney_id is None and check_new_email(attorney.email_address):
+            flash(Markup("A user with that email address already exists. \
+                          Please use this edit feature to make changes"))
             return redirect(url_for('email_edit'))
         else:
-            atty = connection.Attorney.find_and_modify({'_id':ObjectId(attorney_id)}, update={'$set': attorney}, upsert=True, new=True)
+            atty = connection.Attorney.find_and_modify(
+                {'_id': ObjectId(attorney_id)}, update={'$set': attorney},
+                upsert=True, new=True)
 
-        # check to see if the organization name exists in the json file and, if not, to append it to the list
+        # check to see if the organization name exists in the json file and,
+        # if not, to append it to the list
         update_organizations(form.organization_name.data)
 
         # check to see if the user is coming from the email.
-        if attorney_id != None:
+        if attorney_id is not None:
             # Assuming you know the url, don't send a confirmation email
             return redirect(url_for('honor', attorney_id=atty._id))
         else:
@@ -79,29 +105,35 @@ def add(attorney_id=None):
         return redirect(url_for('honor', attorney_id=atty._id))
     return render_template("form.html", form=form)
 
+
 @app.route("/honor/<attorney_id>", methods=["GET", "POST"])
 def honor(attorney_id=None):
-    attorney = connection.Attorney.find_one({'_id':ObjectId(attorney_id)})
+    attorney = connection.Attorney.find_one({'_id': ObjectId(attorney_id)})
     form = newHonorForm()
     if form.validate_on_submit():
-        # todo: Add a check to see whether the year is already there, and do an upsert instead of an append
+        # todo: Add a check to see whether the year is already there,
+        # and do an upsert instead of an append
         records = attorney["records"]
         for rec in records:
             if form.year.data == rec['year']:
                 records.remove(rec)
         records.append(form.data)
         attorney["records"] = records
-        attorney["records"][len(attorney["records"])-1]["method_added"] = u"website"
+        attorney["records"][len(attorney["records"])-1]["method_added"] = \
+            u"website"
         attorney.save()
         return redirect(url_for('thanks'))
     return render_template('honor.html', form=form, attorney=attorney)
 
-@app.route("/email_edit", methods=["GET","POST"])
+
+@app.route("/email_edit", methods=["GET", "POST"])
 def email_edit():
     form = EmailEditForm()
     if form.validate_on_submit():
-        attorney = connection.Attorney.find_one({"email_address":form.email_address.data})
-        if attorney == None:
+        attorney = connection.Attorney.find_one(
+            {"email_address": form.email_address.data}
+        )
+        if attorney is None:
             flash('No email address found. Please try again.')
             return render_template("email_edit.html", form=form)
         else:
@@ -116,9 +148,7 @@ def email_edit():
 ###
 
 # ToDo: change the template to allow for mail of bulkattorneys.csv
-from werkzeug import secure_filename
-from utils import load_attorneys_from_csv
-@app.route('/upload', methods=["GET","POST"])
+@app.route('/upload', methods=["GET", "POST"])
 def upload():
     form = BulkForm()
     if form.validate_on_submit():
@@ -130,23 +160,28 @@ def upload():
         filename = None
     return render_template('upload.html', form=form, filename=filename)
 
+
 @app.route('/api/attorneys', methods=["GET"])
 def attorneys():
-	attorneys = connection.Attorney.find(fields={"_id":False, "email_address":False})
-	return dumps(attorneys)
+    attorneys = connection.Attorney.find(
+        fields={"_id": False, "email_address": False}
+    )
+    return dumps(attorneys)
+
 
 @app.route('/api/organizations', methods=["GET"])
 def organizations():
-    organizations = connection.Organization.find(fields={"_id":False})
+    organizations = connection.Organization.find(fields={"_id": False})
     out = []
     for org in organizations:
         out.append(org["organization_name"])
     return dumps(sorted(out))
 
+
 @app.route('/api/users', methods=["GET"])
 def users():
-	users = db.users.find()
-	return dumps(users)
+    users = db.users.find()
+    return dumps(users)
 
 ####
 # User Authentication
@@ -155,9 +190,11 @@ def users():
 login_manager = LoginManager()
 login_manager.setup_app(app)
 
+
 @login_manager.user_loader
 def load_user(user_id):
     return User(user_id)
+
 
 class User(Document):
     def __init__(self, user_id):
@@ -190,6 +227,7 @@ class User(Document):
     def get_id(self):
         return self.id
 
+
 @app.route("/register", methods=['GET', 'POST'])
 @login_required
 def register():
@@ -209,6 +247,7 @@ def register():
         return redirect(url_for('index'))
     return render_template('register.html', form=form)
 
+
 @app.route("/login", methods=['GET', 'POST'])
 def login():
     opts = {}
@@ -223,6 +262,7 @@ def login():
         return redirect(next_page or url_for('index'))
     return render_template('login.html', form=form)
 
+
 @app.route("/logout")
 def logout():
     logout_user()
@@ -235,21 +275,22 @@ login_manager.login_view = "login"
 # Administration Pages
 ###
 
-from flask.ext import admin
-from flask.ext.admin.contrib.pymongo import ModelView
 
 class AttorneyView(ModelView):
-    column_list = ('first_name', 'middle_initial', 'last_name','email_address','organization_name')
-    column_sortable_list = ('first_name', 'middle_initial', 'last_name','email_address','organization_name')
+    column_list = ('first_name', 'middle_initial', 'last_name',
+                   'email_address', 'organization_name')
+    column_sortable_list = ('first_name', 'middle_initial', 'last_name',
+                            'email_address', 'organization_name')
 
     form = AdminAttorneyForm
 
     def is_accessible(self):
         return current_user.is_authenticated()
 
+
 class UserView(ModelView):
     column_list = ('uid', 'email_address', 'password_hash')
-    column_sortable_list = ('uid', 'email_address','password_hash')
+    column_sortable_list = ('uid', 'email_address', 'password_hash')
 
     form = RegisterForm
 
@@ -257,15 +298,5 @@ class UserView(ModelView):
         return current_user.is_authenticated()
 
 
-from werkzeug.contrib.fixers import ProxyFix
-app.wsgi_app = ProxyFix(app.wsgi_app)
-
-app.secret_key = os.environ.get('SECRET_KEY','123456')
+app.secret_key = os.environ.get('SECRET_KEY', '123456')
 port = int(os.environ.get('PORT', 5000))
-
-if __name__ == "__main__":
-    app.debug = os.environ.get('ENV_DEBUG',False)
-    admin = admin.Admin(app, name='Honor Roll')#,base_template="admin.html")
-    admin.add_view(AttorneyView(db.attorneys, 'Attorneys'))
-    admin.add_view(UserView(db.users, 'Users'))
-    app.run(host='0.0.0.0', port=port)
