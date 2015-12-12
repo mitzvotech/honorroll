@@ -1,7 +1,7 @@
 from unittest import TestCase
 import pytest
 from flask.ext.webtest import TestApp
-from honorroll.app.app import create_app
+from app.app import create_app
 
 from flask import url_for
 

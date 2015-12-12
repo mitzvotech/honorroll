@@ -1,5 +1,5 @@
 import pytest
-from honorroll.app.app import create_app
+from app.app import create_app
 
 
 @pytest.fixture(scope='session')

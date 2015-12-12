@@ -11,13 +11,13 @@ from flask.ext.login import (
 )
 from flask.ext.pymongo import PyMongo
 
-from .forms import (
+from forms import (
     newAttorneyForm, newHonorForm, BulkForm, LoginForm, RegisterForm,
     AdminAttorneyForm, EmailEditForm
 )
-from .models import *
-from .lib.email import send_confirmation
-from .utils import (
+from models import *
+from lib.email import send_confirmation
+from utils import (
     update_organizations, mail_bulk_csv, check_new_email,
     load_attorneys_from_csv
 )
@@ -40,7 +40,7 @@ def create_app(config_name='default'):
 
 def configure_blueprints(app):
     """Configure application blueprints."""
-    from .frontend.views import frontend
+    from frontend.views import frontend
     app.register_blueprint(frontend)
 
     return None
@@ -49,7 +49,8 @@ app = create_app()
 
 MONGODB_URI = os.environ.get("MONGOLAB_URI", 'mongodb://localhost/honorroll')
 MONGODB_DB = os.environ.get("MONGOLAB_DB", 'honorroll')
-connect(MONGODB_URI)
+mongo_client = connect(host=MONGODB_URI)
+db = mongo_client[MONGODB_DB]
 
 CsrfProtect(app)
 # sslify = SSLify(app)
@@ -63,7 +64,7 @@ mandrill_client = mandrill.Mandrill(os.environ.get("SMTP_USER_PWD", ""))
 
 @app.route("/view")
 def view():
-    attorneys = connection.Attorney.find()
+    attorneys = db.attorneys.find()
     return render_template("view.html", attorneys=attorneys)
 
 
@@ -71,44 +72,49 @@ def view():
 @app.route("/attorneys/<attorney_id>", methods=["GET", "POST"])
 def add(attorney_id=None):
     if attorney_id is None:
-        attorney = connection.Attorney()
+        attorney = Attorney
     else:
-        attorney = connection.Attorney.find_one({'_id': ObjectId(attorney_id)})
+        attorney = db.attorneys.find_one({"_id": ObjectId(attorney_id)})
+
     form = newAttorneyForm(obj=attorney)
+    form.populate_obj(attorney)
+    oops
     if form.validate_on_submit():
 
         # upsert the attorney information into the database
         form.populate_obj(attorney)
-        if attorney_id is None and check_new_email(attorney.email_address):
+        if attorney_id is None and check_new_email(attorney["email_address"]):
             flash(Markup("A user with that email address already exists. \
                           Please use this edit feature to make changes"))
             return redirect(url_for('email_edit'))
         else:
-            atty = connection.Attorney.find_and_modify(
+            atty = db.attorneys.find_and_modify(
                 {'_id': ObjectId(attorney_id)}, update={'$set': attorney},
                 upsert=True, new=True)
 
         # check to see if the organization name exists in the json file and,
         # if not, to append it to the list
         update_organizations(form.organization_name.data)
-
+        atty_id = str(atty["_id"])
         # check to see if the user is coming from the email.
         if attorney_id is not None:
             # Assuming you know the url, don't send a confirmation email
-            return redirect(url_for('honor', attorney_id=atty._id))
+            return redirect(
+                url_for('honor', attorney_id=atty_id)
+            )
         else:
             # But if you *don't* know the url, send a confirmation email
-            msg = send_confirmation(atty._id, atty.email_address)
+            msg = send_confirmation(atty_id, atty.email_address)
             result = mandrill_client.messages.send(message=msg)
 
         # go to the honor form to add an honors record
-        return redirect(url_for('honor', attorney_id=atty._id))
+        return redirect(url_for('honor', attorney_id=atty_id))
     return render_template("form.html", form=form)
 
 
 @app.route("/honor/<attorney_id>", methods=["GET", "POST"])
 def honor(attorney_id=None):
-    attorney = connection.Attorney.find_one({'_id': ObjectId(attorney_id)})
+    attorney = db.attorneys.find_one({'_id': ObjectId(attorney_id)})
     form = newHonorForm()
     if form.validate_on_submit():
         # todo: Add a check to see whether the year is already there,
@@ -130,16 +136,17 @@ def honor(attorney_id=None):
 def email_edit():
     form = EmailEditForm()
     if form.validate_on_submit():
-        attorney = connection.Attorney.find_one(
+        attorney = db.attorneys.find_one(
             {"email_address": form.email_address.data}
         )
         if attorney is None:
             flash('No email address found. Please try again.')
             return render_template("email_edit.html", form=form)
         else:
-            msg = send_confirmation(attorney._id, attorney.email_address)
+            atty_id = str(attorney["_id"])
+            msg = send_confirmation(atty_id, attorney["email_address"])
             result = mandrill_client.messages.send(message=msg)
-            return redirect(url_for('index'))
+            return redirect(url_for('frontend.index'))
     return render_template("email_edit.html", form=form)
 
 
@@ -163,15 +170,15 @@ def upload():
 
 @app.route('/api/attorneys', methods=["GET"])
 def attorneys():
-    attorneys = connection.Attorney.find(
-        fields={"_id": False, "email_address": False}
+    attorneys = db.attorneys.find(
+        projection={'_id': False, "email_address": False}
     )
     return dumps(attorneys)
 
 
 @app.route('/api/organizations', methods=["GET"])
 def organizations():
-    organizations = connection.Organization.find(fields={"_id": False})
+    organizations = db.organizations.find()
     out = []
     for org in organizations:
         out.append(org["organization_name"])
@@ -300,3 +307,10 @@ class UserView(ModelView):
 
 app.secret_key = os.environ.get('SECRET_KEY', '123456')
 port = int(os.environ.get('PORT', 5000))
+
+if __name__ == "__main__":
+    app.debug = os.environ.get('ENV_DEBUG', False)
+    admin = admin.Admin(app, name='Honor Roll')
+    # admin.add_view(AttorneyView(Attorney._get_collection(), 'Attorneys'))
+    # admin.add_view(UserView(User._get_collection(), 'Users'))
+    app.run(host='0.0.0.0', port=port)
