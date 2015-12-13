@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block body %}
-  <h1>Add an Honor for {{attorney}}</h1>
+  <h1>Add an Honor for {{attorney.first_name}} {{attorney.last_name}}</h1>
   <form class="grid-form" action="{{request.path}}" method="POST">
     {{ form.hidden_tag() }}
     <fieldset>
@@ -21,7 +21,7 @@
         </div>
         <div data-row-span="1">
             <div data-field-span="1"><label>Affirmation</label>
-            <p>I hereby declare that in 2014, I provided legal services  at no fee and without expectation of fee to one or more of the following: (i) persons of limited means or charitable, religious, civic, community, governmental, or educational organizations in matters which are designed primarily to address the needs of persons of limited means; (ii) individuals, groups, or organizations seeking to secure or protect civil rights, civil liberties, or public rights; and (iii) charitable, religious, civic, community, governmental, or educational organizations in matters in furtherance of their organizational purposes, where the payment of standard legal fees would significantly deplete the organization's economic resources or would be otherwise inappropriate.</p>
+            <p>I hereby declare that in 2015, I provided legal services  at no fee and without expectation of fee to one or more of the following: (i) persons of limited means or charitable, religious, civic, community, governmental, or educational organizations in matters which are designed primarily to address the needs of persons of limited means; (ii) individuals, groups, or organizations seeking to secure or protect civil rights, civil liberties, or public rights; and (iii) charitable, religious, civic, community, governmental, or educational organizations in matters in furtherance of their organizational purposes, where the payment of standard legal fees would significantly deplete the organization's economic resources or would be otherwise inappropriate.</p>
             </div>
         </div>
         <button name="submit" type="submit">Submit</button>

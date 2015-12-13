@@ -5,6 +5,8 @@ from wtforms import (
 )
 from datetime import datetime
 from flask.ext.admin.model.fields import InlineFormField, InlineFieldList
+from flask.ext.mongoengine.wtf import model_form
+from models import Attorney, Record, Organization
 
 
 class newAttorneyForm(Form):
@@ -42,6 +44,8 @@ choices = [
         authorized by the D.C. Court of Appeals or Superior Court.')]
 
 
+# newHonorForm = model_form(Record)
+
 class newHonorForm(Form):
     year = StringField(
         u'Year',
@@ -59,41 +63,6 @@ class newHonorForm(Form):
         choices=choices, default='dc'
     )
     date_modified = HiddenField(default=datetime.now)
-
-
-class AdminAttorneyForm(Form):
-    first_name = StringField(
-        u'First Name', [validators.InputRequired(message="Required Field")])
-    middle_initial = StringField(u'Middle Initial', [validators.Optional()])
-    last_name = StringField(
-        u'Last Name', [validators.InputRequired(message="Required Field")])
-    email_address = StringField(
-        u'Email Address', [
-            validators.Email(),
-            validators.InputRequired(message="Required Field")
-        ])
-    organization_name = StringField(u'Organization', [validators.Optional()])
-    records = InlineFieldList(InlineFormField(newHonorForm))
-
-
-class LoginForm(Form):
-    username = StringField(
-        u'Username', [validators.InputRequired(message="Required Field")])
-    password = PasswordField(
-        u'Password', [validators.InputRequired(message="Required Field")])
-
-
-class RegisterForm(Form):
-    uid = StringField(
-        u'Username', [validators.InputRequired(message="Required Field")])
-    email_address = StringField(
-        u'email_address', [validators.InputRequired(message="Required Field")])
-    password = PasswordField(
-        u'Password', [validators.InputRequired(message="Required Field")])
-
-
-class BulkForm(Form):
-    f = FileField('Upload the .csv file')
 
 
 class EmailEditForm(Form):
