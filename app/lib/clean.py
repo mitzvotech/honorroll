@@ -16,4 +16,4 @@ for row in reader:
     else:
         a = json.loads(dumps(connection.hr.attorneys.find({"first_name":row[0],"last_name":row[2]})))
         out.append(json.loads(dumps(a)))
-print json.dumps(out,indent=2)
+print(json.dumps(out, indent=2))

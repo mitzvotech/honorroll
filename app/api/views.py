@@ -9,7 +9,6 @@ api = Blueprint('api', __name__, static_folder='../static')
 
 @api.route('/attorneys', methods=["GET"])
 def attorneys():
-
     attorneys = Attorney \
                     .objects.all() \
                     .exclude("id").exclude("email_address") \
@@ -20,9 +19,3 @@ def attorneys():
 @api.route('/organizations', methods=["GET"])
 def organizations():
     return dumps(Organization.dump_list())
-
-
-# @api.route('/users', methods=["GET"])
-# def users():
-#     users = db.users.find()
-#     return dumps(users)

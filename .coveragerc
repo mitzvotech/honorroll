@@ -2,3 +2,6 @@
 [run]
 branch = True
 source = app
+
+[html]
+directory = coverage_html_report
