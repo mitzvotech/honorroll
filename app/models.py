@@ -1,4 +1,13 @@
 from mongoengine import *
+from bson import json_util
+
+
+class AttorneyQuerySet(QuerySet):
+    def get_attorneys(self):
+        return self.exclude('id').exclude('email_address').to_json()
+
+    def to_json(self):
+        return "[%s]" % (",".join([doc.to_json() for doc in self]))
 
 
 class Record(EmbeddedDocument):
@@ -21,6 +30,9 @@ class Organization(Document):
         return queryset.values_list('organization_name')\
                         .order_by('organization_name')
 
+    def __str__(self):
+        return "%s" % self.organization_name
+
 
 class Attorney(Document):
     first_name = StringField(required=True)
@@ -32,8 +44,24 @@ class Attorney(Document):
     organization_name = ReferenceField(Organization)
 
     meta = {
-        'collection': 'attorneys'
+        'collection': 'attorneys',
+        'queryset_class': AttorneyQuerySet
     }
+
+    def to_json(self):
+        data = self.to_mongo()
+        data["organization_name"] = self.organization_name.organization_name
+        return json_util.dumps(data)
+
+    # # @queryset_manager
+    # def to_dict():
+    #     data = Attorney.objects  # .as_pymongo()
+    #     out = []
+    #     for idx, obj in enumerate(data):
+    #         out.append(data[idx])
+    #         out[idx]["organization_name"] = data[idx].organization_name.organization_name
+    #         xxx
+    #     return out
 
     def __str__(self):
         return "%s %s" % (self.first_name, self.last_name)

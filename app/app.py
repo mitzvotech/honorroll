@@ -15,6 +15,7 @@ from utils import update_organizations, check_new_email
 import mandrill
 
 from flask.ext.admin.contrib.pymongo import ModelView
+from flask.ext.mongoengine.wtf import model_form
 
 # from werkzeug.contrib.fixers import ProxyFix
 
@@ -55,7 +56,7 @@ mandrill_client = mandrill.Mandrill(os.environ.get("SMTP_USER_PWD", ""))
 @app.route("/attorneys/<attorney_id>", methods=["GET", "POST"])
 def add(attorney_id=None):
     if attorney_id is None:
-        attorney = Attorney
+        attorney = Attorney()
     else:
         attorney = Attorney.objects.get(id=ObjectId(attorney_id))
 
@@ -70,13 +71,14 @@ def add(attorney_id=None):
                           Please use this edit feature to make changes"))
             return redirect(url_for('email_edit'))
         else:
-            atty = Attorneys.objects \
-                            .get(id=ObjectId(attorney_id)).update(attorney)
+            attorney["organization_name"] = Organization.objects.modify(
+                organization_name=form.organization_name.data, upsert=True
+            )
+            atty = attorney.save()
 
         # check to see if the organization name exists in the json file and,
         # if not, to append it to the list
-        update_organizations(form.organization_name.data)
-        atty_id = str(atty["_id"])
+        atty_id = str(atty.id)
         # check to see if the user is coming from the email.
         if attorney_id is not None:
             # Assuming you know the url, don't send a confirmation email

@@ -3,6 +3,7 @@ import csv
 from datetime import datetime
 import codecs
 import json
+from models import Attorney
 from flask_mail import Message
 
 
@@ -68,9 +69,10 @@ def load_attorneys_from_csv(filename):
 
 
 def check_new_email(email_address):
-    if connection.Attorney.find_one({'email_address': email_address}) != None:
+    try:
+        Attorney.objects.get(email_address=email_address)
         return True
-    else:
+    except Attorney.DoesNotExist:
         return False
 
 

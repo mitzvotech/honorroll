@@ -7,20 +7,18 @@
         <thead>
             <tr>
                 <th>First Name</th>
-                <th>Middle Initial</th>
                 <th>Last Name</th>
                 <th>Firm/Agency</th>
                 <th>Year</th>
                 <th>Honors</th>
             </tr>
         </thead>
- 
+
         <tbody>
         {% for attorney in attorneys %}
                 {% if attorney.records | length >= 1 %}
             <tr>
                 <td>{{attorney.first_name}}</td>
-                <td>{{attorney.middle_initial}}</td>
                 <td>{{attorney.last_name}}</td>
                 <td>{{attorney.organization_name|safe}}</td>
                 <td>{{attorney.records[0].year}}</td>

@@ -9,11 +9,7 @@ api = Blueprint('api', __name__, static_folder='../static')
 
 @api.route('/attorneys', methods=["GET"])
 def attorneys():
-    attorneys = Attorney \
-                    .objects.all() \
-                    .exclude("id").exclude("email_address") \
-                    .to_json()
-    return attorneys
+    return Attorney.objects.get_attorneys()
 
 
 @api.route('/organizations', methods=["GET"])

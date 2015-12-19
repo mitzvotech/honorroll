@@ -1,5 +1,5 @@
 from app.app import create_app
-from app.models import Attorney
+from app.models import Attorney, Organization
 import datetime
 import pytest
 
@@ -11,8 +11,9 @@ def app(request):
 
 @pytest.fixture(scope="session")
 def add_attorney(request):
-    Attorney(
-        first_name="John", last_name="Doe", organization_name="TestOrg",
+    org = Organization(organization_name="TestOrg").save()
+    attorney = Attorney(
+        first_name="John", last_name="Doe", organization_name=org,
         email_address="john.doe@example.com",
         records=[
             {
@@ -25,6 +26,7 @@ def add_attorney(request):
 
     def teardown():
         Attorney.objects.delete()
+        Organization.objects.delete()
 
     request.addfinalizer(teardown)
     return add_attorney

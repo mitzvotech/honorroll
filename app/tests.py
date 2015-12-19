@@ -1,5 +1,5 @@
 import pytest
-from app.models import Attorney
+from app.models import Attorney, Organization
 from flask import url_for
 import json
 
@@ -39,6 +39,7 @@ class TestAPI:
 @pytest.mark.usefixtures("add_attorney")
 class TestDatabase:
     def test_add_attorney(self):
+        assert len(Organization.objects) == 1
         assert len(Attorney.objects) == 1
 
     def test_api_after_add(self, client):
