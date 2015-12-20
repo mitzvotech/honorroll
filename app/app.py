@@ -1,5 +1,5 @@
 from flask import (
-    Flask, render_template
+    Flask
 )
 from flask_wtf.csrf import CsrfProtect
 import os
@@ -30,16 +30,6 @@ mongo_client = connect(host=MONGODB_URI)
 db = mongo_client[MONGODB_DB]
 
 CsrfProtect(app)
-# sslify = SSLify(app)
-
-###
-# Defined Routes
-###
-
-
-
-
-
 
 port = int(os.environ.get('PORT', 5000))
 
