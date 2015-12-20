@@ -10,4 +10,4 @@ for org in d:
 	organization = connection.Organization()
 	organization["organization_name"] = org
 	organization.save()
-	print org + ' added!'
+	print( org + ' added!')

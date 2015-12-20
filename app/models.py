@@ -1,60 +1,67 @@
-from mongokit import *
-import datetime
-from bson.objectid import ObjectId
-import os
+from mongoengine import *
+from bson import json_util
 
-MONGODB_URI = os.environ["MONGOLAB_URI"]
-MONGODB_DB = os.environ["MONGOLAB_DB"]
-connection = Connection(MONGODB_URI)
-# connection = Connection()
-db = connection[MONGODB_DB]
-MONGODB_HOST = 'localhost'
-MONGODB_PORT = 27017
 
-# register the Attorney document with our current connection
-@connection.register
-class Attorney(Document):
-	__collection__ = 'attorneys'
-	__database__ = MONGODB_DB
-	structure = {
-		'first_name': unicode,
-		'middle_initial': unicode,
-		'last_name': unicode,
-		'email_address': unicode,
-		'records': [
-			{
-				'year': unicode,
-				'honor_choice': unicode,
-				'rule_49_choice': unicode,
-				'date_modified': unicode,
-				'method_added': unicode
-			}
-		],
-		'organization_name': unicode
-	}
-	default_values = {
-		'records': []
-	}
-	validators = {
-        # 'first_name': max_length(50),
-        # 'email': max_length(120)
-    }
-	use_dot_notation = True
-	
-	def __repr__(self):
-		return '%s %s %s (%s)' % (self.first_name, self.middle_initial, self.last_name, self.email_address)
+class AttorneyQuerySet(QuerySet):
+    def get_attorneys(self):
+        return self.exclude('id').exclude('email_address').to_json()
 
-@connection.register
+    def to_json(self):
+        return "[%s]" % (",".join([doc.to_json() for doc in self]))
+
+
+class Record(EmbeddedDocument):
+    year = StringField(default="2015")
+    honor_choice = StringField()
+    rule_49_choice = StringField()
+    date_modified = StringField()
+    method_added = StringField()
+
+
 class Organization(Document):
-	__collection__ = 'organizations'
-	__database__ = MONGODB_DB
-	structure = {
-		'organization_name': unicode
-	}
-	use_dot_notation = True
-	
-	def __repr__(self):
-		return '%s' % (self.organization_name)
+    organization_name = StringField(required=True)
+
+    meta = {
+        'collection': 'organizations'
+    }
+
+    @queryset_manager
+    def dump_list(doc_cls, queryset):
+        return queryset.values_list('organization_name')\
+                        .order_by('organization_name')
+
+    def __str__(self):
+        return "%s" % self.organization_name
 
 
-connection.register([Attorney, Organization])
+class Attorney(Document):
+    first_name = StringField(required=True)
+    middle_initial = StringField(required=False)
+    last_name = StringField(required=True)
+    email_address = EmailField(required=True)
+    # records = ListField(Record, required=False)
+    records = ListField(DictField())
+    organization_name = ReferenceField(Organization)
+
+    meta = {
+        'collection': 'attorneys',
+        'queryset_class': AttorneyQuerySet
+    }
+
+    def to_json(self):
+        data = self.to_mongo()
+        data["organization_name"] = self.organization_name.organization_name
+        return json_util.dumps(data)
+
+    # # @queryset_manager
+    # def to_dict():
+    #     data = Attorney.objects  # .as_pymongo()
+    #     out = []
+    #     for idx, obj in enumerate(data):
+    #         out.append(data[idx])
+    #         out[idx]["organization_name"] = data[idx].organization_name.organization_name
+    #         xxx
+    #     return out
+
+    def __str__(self):
+        return "%s %s" % (self.first_name, self.last_name)

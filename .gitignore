@@ -2,3 +2,7 @@ env/
 *.pyc
 .env
 .DS_Store
+**/.cache
+.coverage
+coverage_html_report/
+**/__pycache__
