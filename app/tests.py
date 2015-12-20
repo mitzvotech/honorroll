@@ -74,3 +74,16 @@ class TestSeleniumViews:
         driver.find_element_by_name("submit").click()
         assert "Add an Honor for Jane Smith" in \
             driver.find_element_by_id('honor-form-header').text
+
+
+class TestBulkLoad:
+
+    def test_bulk_load(self):
+        from app.utils import load_attorneys_from_csv
+        # Check to see if the home page works
+        load_attorneys_from_csv('docs/bulkattorneys.csv')
+        count = Attorney.objects.count()
+        assert count == 4
+        assert Attorney.objects.get(
+            email_address="tim@yo.com"
+        ).first_name == "Tim"

@@ -6,7 +6,7 @@ from forms import (
 )
 from models import *
 from lib.email import send_confirmation
-from utils import update_organizations, check_new_email
+from utils import check_new_email
 # from flask_sslify import SSLify
 import mandrill
 import os
