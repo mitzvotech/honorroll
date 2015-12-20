@@ -7,6 +7,7 @@ Flask-Admin==1.0.9
 Flask-Bcrypt==0.6.0
 Flask-Login==0.2.11
 Flask-Mail==0.9.1
+flask-mongoengine==0.7.4
 Flask-Principal==0.4.0
 Flask-PyMongo==0.4.0
 Flask-SSLify==0.1.5
@@ -16,6 +17,7 @@ itsdangerous==0.24
 Jinja2==2.8
 mandrill==1.0.57
 MarkupSafe==0.23
+mongoengine==0.10.5
 mongokit==0.9.1.1
 ordereddict==1.1
 passlib==1.6.2
@@ -25,6 +27,7 @@ PyExecJS==1.1.0
 pymongo==3.1.1
 pytest==2.8.4
 pytest-flask==0.10.0
+pytest-pythonpath==0.7
 python-dotenv==0.3.0
 requests==2.8.1
 six==1.8.0
