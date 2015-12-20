@@ -5,3 +5,4 @@ env/
 **/.cache
 .coverage
 coverage_html_report/
+**/__pycache__
