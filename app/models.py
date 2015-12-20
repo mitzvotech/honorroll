@@ -22,7 +22,8 @@ class Organization(Document):
     organization_name = StringField(required=True)
 
     meta = {
-        'collection': 'organizations'
+        'collection': 'organizations',
+        'indexes': ['organization_name']
     }
 
     @queryset_manager
