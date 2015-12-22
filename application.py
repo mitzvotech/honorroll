@@ -1,5 +1,6 @@
-from app.app import *
+from app.app import app as application
+import os
 
 if __name__ == "__main__":
-    app.debug = os.environ.get('ENV_DEBUG', False)
-    app.run(host='0.0.0.0', port=port)
+    application.debug = os.environ.get('ENV_DEBUG', False)
+    application.run(host='0.0.0.0')
