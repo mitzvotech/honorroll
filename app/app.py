@@ -10,6 +10,12 @@ def create_app(config_name='default'):
     app = Flask(__name__)
     app.secret_key = os.environ.get('SECRET_KEY', '123456')
     configure_blueprints(app)
+
+    MONGODB_URI = os.environ.get("MONGOLAB_URI", 'mongodb://localhost/honorroll')
+    MONGODB_DB = os.environ.get("MONGOLAB_DB", 'honorroll')
+    mongo_client = connect(host=MONGODB_URI)
+    db = mongo_client[MONGODB_DB]
+
     return app
 
 
@@ -23,11 +29,6 @@ def configure_blueprints(app):
     return None
 
 app = create_app()
-
-MONGODB_URI = os.environ.get("MONGOLAB_URI", 'mongodb://localhost/honorroll')
-MONGODB_DB = os.environ.get("MONGOLAB_DB", 'honorroll')
-mongo_client = connect(host=MONGODB_URI)
-db = mongo_client[MONGODB_DB]
 
 CsrfProtect(app)
 
