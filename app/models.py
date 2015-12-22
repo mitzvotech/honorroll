@@ -46,10 +46,15 @@ class Attorney(Document):
 
     meta = {
         'collection': 'attorneys',
-        'queryset_class': AttorneyQuerySet
+        'queryset_class': AttorneyQuerySet,
+        'strict': False
     }
 
     def to_json(self):
         data = self.to_mongo()
-        data["organization_name"] = self.organization_name.organization_name
+        try:
+            data["organization_name"] = self.organization_name \
+                                            .organization_name
+        except:
+            data["organization_name"] = ""
         return json_util.dumps(data)

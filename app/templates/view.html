@@ -15,17 +15,7 @@
         </thead>
 
         <tbody>
-        {% for attorney in attorneys %}
-                {% if attorney.records | length >= 1 %}
-            <tr>
-                <td>{{attorney.first_name}}</td>
-                <td>{{attorney.last_name}}</td>
-                <td>{{attorney.organization_name|safe}}</td>
-                <td>{{attorney.records[0].year}}</td>
-                <td>{{attorney.records[0].honor_choice}}</td>
-            </tr>
-                {% endif %}
-        {% endfor %}
+
         </tbody>
     </table>
 {% endblock %}
@@ -34,7 +24,20 @@
 <script type="text/javascript" src='//cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js'></script>
 <script type="text/javascript">
     $(document).ready(function() {
-    $('#honorroll').DataTable({'order':[[2,'asc'],[0,'asc']]});
+      $.getJSON('/api/attorneys', function (data) {
+        $('#honorroll').DataTable(
+          {
+          "data": data,
+          "columns": [
+            { "data": "first_name" },
+            { "data": "last_name" },
+            { "data": "organization_name" },
+            { "data": "year" },
+            { "data": "honors"}
+          ],
+          'order':[[2,'asc'],[0,'asc']]
+        });        
+      })
     });
 </script>
 {% endblock %}
