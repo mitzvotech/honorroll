@@ -104,14 +104,13 @@ def honor(attorney_id=None):
 def email_edit():
     form = EmailEditForm()
     if form.validate_on_submit():
-        attorney = db.attorneys.find_one(
-            {"email_address": form.email_address.data}
-        )
+        attorney = Attorney.objects(email_address=form.email_address.data) \
+                           .first()
         if attorney is None:
             flash('No email address found. Please try again.')
             return render_template("email_edit.html", form=form)
         else:
-            atty_id = str(attorney["_id"])
+            atty_id = str(attorney.id)
             msg = send_confirmation(atty_id, attorney["email_address"])
             result = mandrill_client.messages.send(message=msg)
             return redirect(url_for('frontend.index'))

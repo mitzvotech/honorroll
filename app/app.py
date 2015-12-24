@@ -20,9 +20,7 @@ def create_app(config_name='default'):
 
     MONGODB_URI = os.environ.get(
         "MONGOLAB_URI", 'mongodb://localhost/honorroll')
-    MONGODB_DB = os.environ.get("MONGOLAB_DB", 'honorroll')
     mongo_client = connect(host=MONGODB_URI)
-    db = mongo_client[MONGODB_DB]
 
     if os.environ.get("AWS", False):
         set_up_logging()
@@ -32,7 +30,6 @@ def create_app(config_name='default'):
 
 def set_up_logging():
     import logging
-    import socket
     from logging.handlers import SysLogHandler
 
     logger = logging.getLogger()
