@@ -6,9 +6,6 @@ class AttorneyQuerySet(QuerySet):
     def get_attorneys(self):
         return self.exclude('id').exclude('email_address').to_json()
 
-    def to_json(self):
-        return "[%s]" % (",".join([doc.to_json() for doc in self]))
-
 
 class Record(EmbeddedDocument):
     year = StringField(default="2015")

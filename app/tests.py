@@ -26,7 +26,7 @@ class TestFrontend:
 class TestAPI:
 
     def test_api_attorneys(self, client):
-        # Check to see if the home page works
+        Check to see if the home page works
         res = client.get(url_for('api.attorneys'))
         assert res.status_code == 200
 
@@ -44,13 +44,13 @@ class TestDatabase:
 
     def test_api_after_add(self, client):
         res = json.loads(
-            client.get(url_for('api.attorneys')).get_data().decode('utf-8')
+              client.get(url_for('api.attorneys')).get_data().decode('utf-8')
         )
         assert len(res) == 1    # should have one attorney in the api
         assert res[len(res) - 1]["first_name"] == "John"
 
     def test_frontend_attorneys(self, client):
-        # Check to see if the home page works
+        Check to see if the home page works
         res = client.get(url_for('frontend.view'))
         assert " <td>John</td>\n" in res.get_data().decode('utf-8')
 

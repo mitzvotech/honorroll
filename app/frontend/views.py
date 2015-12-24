@@ -22,10 +22,9 @@ def index():
     return render_template("index.html")
 
 
-# @frontend.route("/view")
-# def view():
-#     attorneys = Attorney.objects
-#     return render_template("view.html", attorneys=attorneys)
+@frontend.route("/view")
+def view():
+    return render_template("view.html")
 
 
 @frontend.route("/questions")
