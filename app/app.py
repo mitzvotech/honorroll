@@ -23,7 +23,28 @@ def create_app(config_name='default'):
     MONGODB_DB = os.environ.get("MONGOLAB_DB", 'honorroll')
     mongo_client = connect(host=MONGODB_URI)
     db = mongo_client[MONGODB_DB]
+
+    if os.environ.get("AWS", False):
+        set_up_logging()
+
     return app
+
+
+def set_up_logging():
+    import logging
+    import socket
+    from logging.handlers import SysLogHandler
+
+    logger = logging.getLogger()
+    logger.setLevel(logging.DEBUG)
+    syslog = SysLogHandler(address=(
+        os.environ.get("PAPERTRAIL_HOST"),
+        os.environ.get("PAPERTRAIL_PORT"),
+    ))
+    formatter = logging.Formatter('Honor Roll: %(message)s')
+
+    syslog.setFormatter(formatter)
+    logger.addHandler(syslog)
 
 
 def configure_blueprints(app):

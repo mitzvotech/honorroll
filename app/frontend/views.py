@@ -19,6 +19,7 @@ frontend = Blueprint('frontend', __name__, static_folder='../static')
 
 @frontend.route("/")
 def index():
+    xx
     return render_template("index.html")
 
 
