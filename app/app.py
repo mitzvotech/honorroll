@@ -39,7 +39,7 @@ def set_up_logging():
     logger.setLevel(logging.DEBUG)
     syslog = SysLogHandler(address=(
         os.environ.get("PAPERTRAIL_HOST"),
-        os.environ.get("PAPERTRAIL_PORT"),
+        int(os.environ.get("PAPERTRAIL_PORT")),
     ))
     formatter = logging.Formatter('Honor Roll: %(message)s')
 
