@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block body %}
-  <h1>Add an Honor for {{attorney.first_name}} {{attorney.last_name}}</h1>
+  <h1 id="honor-form-header">Add an Honor for {{attorney.first_name}} {{attorney.last_name}}</h1>
   <form class="grid-form" action="{{request.path}}" method="POST">
     {{ form.hidden_tag() }}
     <fieldset>

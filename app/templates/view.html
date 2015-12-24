@@ -3,38 +3,16 @@
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.4/css/jquery.dataTables.min.css">
 {% endblock %}
 {% block body %}
-<table id="honorroll" class="display" cellspacing="0" width="100%">
-        <thead>
-            <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Firm/Agency</th>
-                <th>Year</th>
-                <th>Honors</th>
-            </tr>
-        </thead>
-
-        <tbody>
-        {% for attorney in attorneys %}
-                {% if attorney.records | length >= 1 %}
-            <tr>
-                <td>{{attorney.first_name}}</td>
-                <td>{{attorney.last_name}}</td>
-                <td>{{attorney.organization_name|safe}}</td>
-                <td>{{attorney.records[0].year}}</td>
-                <td>{{attorney.records[0].honor_choice}}</td>
-            </tr>
-                {% endif %}
-        {% endfor %}
-        </tbody>
-    </table>
+<div id="loading">Loading... please wait</div>
+<table id="honorroll" class="display" cellspacing="0" width="100%"></table>
 {% endblock %}
 
 {% block extra_js %}
 <script type="text/javascript" src='//cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js'></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/AttorneyTable.js') }}"></script>
 <script type="text/javascript">
-    $(document).ready(function() {
-    $('#honorroll').DataTable({'order':[[2,'asc'],[0,'asc']]});
-    });
+$().ready(function(){
+  AttorneyTable()
+})
 </script>
 {% endblock %}

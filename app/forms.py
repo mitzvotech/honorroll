@@ -5,7 +5,6 @@ from wtforms import (
 )
 from datetime import datetime
 from flask.ext.admin.model.fields import InlineFormField, InlineFieldList
-from flask.ext.mongoengine.wtf import model_form
 from models import Attorney, Record, Organization
 
 
@@ -43,8 +42,6 @@ choices = [
         a special program for representation or assistance that was expressly \
         authorized by the D.C. Court of Appeals or Superior Court.')]
 
-
-# newHonorForm = model_form(Record)
 
 class newHonorForm(Form):
     year = StringField(

@@ -2,11 +2,26 @@ from app.app import create_app
 from app.models import Attorney, Organization
 import datetime
 import pytest
+from selenium import webdriver
+
+browser = webdriver.Firefox()
+
+
+def base_url(live_server):
+    return live_server.url()
 
 
 @pytest.fixture(scope='session')
 def app(request):
-    return create_app()
+    app = create_app()
+    app.debug = True
+    return app
+
+
+@pytest.fixture(scope='session')
+def driver(request):
+    request.addfinalizer(lambda *args: browser.quit())
+    return browser
 
 
 @pytest.fixture(scope="session")
