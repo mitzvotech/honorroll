@@ -3,8 +3,17 @@ from bson import json_util
 
 
 class AttorneyQuerySet(QuerySet):
+
     def get_attorneys(self):
-        return self.exclude('id').exclude('email_address').to_json()
+        out = []
+        for attorney in self:
+            out.append({
+                'first_name': attorney.first_name,
+                'last_name': attorney.last_name,
+                'organization_name': str(attorney.organization_name),
+                'records': attorney.records
+            })
+        return json_util.dumps(out)
 
 
 class Record(EmbeddedDocument):
@@ -28,6 +37,9 @@ class Organization(Document):
         return queryset.values_list('organization_name')\
                         .order_by('organization_name')
 
+    def to_json(self):
+        return "%s" % self.organization_name
+
     def __str__(self):
         return "%s" % self.organization_name
 
@@ -39,19 +51,10 @@ class Attorney(Document):
     email_address = EmailField(required=True)
     # records = ListField(Record, required=False)
     records = ListField(DictField())
-    organization_name = ReferenceField(Organization)
+    organization_name = ReferenceField(Organization, dbref=True)
 
     meta = {
         'collection': 'attorneys',
         'queryset_class': AttorneyQuerySet,
         'strict': False
     }
-
-    def to_json(self):
-        data = self.to_mongo()
-        try:
-            data["organization_name"] = self.organization_name \
-                                            .organization_name
-        except:
-            data["organization_name"] = ""
-        return json_util.dumps(data)

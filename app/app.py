@@ -2,6 +2,8 @@ from flask import (
     Flask
 )
 from flask_wtf.csrf import CsrfProtect
+from cache import cache
+
 import os
 from models import *
 
@@ -9,13 +11,18 @@ from models import *
 def create_app(config_name='default'):
     app = Flask(__name__)
     app.secret_key = os.environ.get('SECRET_KEY', '123456')
+
+    # Initalizes the Cache
+    cache.init_app(app)
+
+    # Configure the Routes
     configure_blueprints(app)
 
-    MONGODB_URI = os.environ.get("MONGOLAB_URI", 'mongodb://localhost/honorroll')
+    MONGODB_URI = os.environ.get(
+        "MONGOLAB_URI", 'mongodb://localhost/honorroll')
     MONGODB_DB = os.environ.get("MONGOLAB_DB", 'honorroll')
     mongo_client = connect(host=MONGODB_URI)
     db = mongo_client[MONGODB_DB]
-
     return app
 
 
