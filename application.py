@@ -8,9 +8,9 @@ if __name__ == "__main__":
     ADMINS = ['vdavez@gmail.com']
     if not application.debug:
         import logging
-        from logging.handlers import SMTPHandler
-        mail_handler = SMTPHandler('127.0.0.1',
-                                   'capitalprobono@esq.io',
-                                   ADMINS, 'YourApplication Failed')
-        mail_handler.setLevel(logging.ERROR)
-        app.logger.addHandler(mail_handler)
+
+        FORMAT = '%(asctime)-15s [%(levelname)s] %(message)s'
+        DATE_FMT = '%m/%d/%Y %H:%M:%S'
+
+        loglevel = logging.DEBUG
+        logging.basicConfig(format=FORMAT, datefmt=DATE_FMT, level=loglevel)
