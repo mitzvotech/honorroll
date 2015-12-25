@@ -22,11 +22,16 @@ class TestFrontend:
         res = client.get(url_for('frontend.thanks'))
         assert res.status_code == 200
 
+    def test_frontend_view(self, client):
+        # Check to see if the home page works
+        res = client.get(url_for('frontend.view'))
+        assert res.status_code == 200
+
 
 class TestAPI:
 
     def test_api_attorneys(self, client):
-        Check to see if the home page works
+        # Check to see if the home page works
         res = client.get(url_for('api.attorneys'))
         assert res.status_code == 200
 
@@ -48,11 +53,6 @@ class TestDatabase:
         )
         assert len(res) == 1    # should have one attorney in the api
         assert res[len(res) - 1]["first_name"] == "John"
-
-    def test_frontend_attorneys(self, client):
-        Check to see if the home page works
-        res = client.get(url_for('frontend.view'))
-        assert " <td>John</td>\n" in res.get_data().decode('utf-8')
 
 
 class TestSeleniumViews:

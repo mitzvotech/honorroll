@@ -1,0 +1,19 @@
+language: python
+python:
+- '3.5'
+install: pip install -r requirements.txt
+services:
+- mongodb
+script: py.test --cov
+cache: pip
+deploy:
+  provider: elasticbeanstalk
+  access_key_id:
+    secure: "AYZDfflhE1lnZ1cA1S10XF/caxlm/pgF+QlL9s3LP4UTR90zdSoR8oLH40Ll4thTtYoQlaAIMCDp4FUHFoiDlopO3RgQ9vITr2BpGefsDxGJdYwNaf6Z7UqCyM9YVifLAIahSU+E3BoWqz72LvTkc0B3pcI4RC/6gyeHl4oUIzs="
+  secret_access_key:
+    secure: "dpHTrgmtv+UMdNrRipOzItRpDq2Rm1FojK5bKmNjcQMlFxS9qISFzJQBE+a+3zdyRHOlM6wmthmQNCnNYa9179drQmwGhhFXAxJj0MjkefIDkjb9EfCgNVzE2Gkdtvv49ts5boiOfwCqHCX+tPLfn81kGDW/j3ERfpvz65/uvSM="
+  region: "us-east-1"
+  app: "honorroll"
+  env: "honorroll-env"
+  on:
+    branch: master

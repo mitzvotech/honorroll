@@ -2,9 +2,11 @@ from app.app import create_app
 from app.models import Attorney, Organization
 import datetime
 import pytest
+import os
 from selenium import webdriver
 
-browser = webdriver.Firefox()
+
+os.environ["MONGOLAB_URI"] = "mongodb://localhost/honorroll"
 
 
 def base_url(live_server):
@@ -20,6 +22,8 @@ def app(request):
 
 @pytest.fixture(scope='session')
 def driver(request):
+    browser = webdriver.PhantomJS('phantomjs')
+    browser.set_page_load_timeout(30)
     request.addfinalizer(lambda *args: browser.quit())
     return browser
 
