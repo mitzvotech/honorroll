@@ -6,3 +6,5 @@ env/
 .coverage
 coverage_html_report/
 **/__pycache__
+ghostdriver.log
+**/.elasticbeanstalk
