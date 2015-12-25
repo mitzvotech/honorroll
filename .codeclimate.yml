@@ -3,3 +3,4 @@ languages:
   JavaScript: true
 exclude_paths:
 - "app/static/bower_components/**/*"
+- "app/static/js/autoComplt.js"
