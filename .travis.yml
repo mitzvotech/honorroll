@@ -2,6 +2,7 @@ language: python
 python:
   - "3.4"
   - "3.5"
-  - "stable"
 install: "pip install -r requirements.txt"
+services:
+  - mongodb
 script: py.test --cov
