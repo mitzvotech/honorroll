@@ -3,8 +3,11 @@ from app.models import Attorney, Organization
 import datetime
 import pytest
 from selenium import webdriver
+import os
 
-browser = webdriver.Firefox()
+
+os.environ["MONGOLAB_URI"] = "mongodb://localhost/honorroll"
+browser = webdriver.PhantomJS('phantomjs')
 
 
 def base_url(live_server):
