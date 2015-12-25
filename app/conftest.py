@@ -23,6 +23,7 @@ def app(request):
 @pytest.fixture(scope='session')
 def driver(request):
     browser = webdriver.PhantomJS('phantomjs')
+    browser.set_page_load_timeout(30)
     request.addfinalizer(lambda *args: browser.quit())
     return browser
 
