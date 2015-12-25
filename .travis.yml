@@ -15,5 +15,7 @@ deploy:
   region: "us-east-1"
   app: "honorroll"
   env: "honorroll-env"
+  bucket_name: "elasticbeanstalk-us-east-1-421725848418"
+  bucket_path: "honorroll"
   on:
     branch: master
