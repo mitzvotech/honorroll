@@ -10,3 +10,4 @@ ghostdriver.log
 **/.elasticbeanstalk
 data/attorneys.json
 data/organizations.json
+dump/**/*
