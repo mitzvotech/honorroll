@@ -8,3 +8,5 @@ coverage_html_report/
 **/__pycache__
 ghostdriver.log
 **/.elasticbeanstalk
+data/attorneys.json
+data/organizations.json

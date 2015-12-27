@@ -32,7 +32,7 @@ def driver(request):
 def add_attorney(request):
     org = Organization(organization_name="TestOrg").save()
     attorney = Attorney(
-        first_name="John", last_name="Doe", organization_name=org,
+        first_name="John", last_name="Doe", organization_name=org.organization_name,
         email_address="john.doe@example.com",
         records=[
             {

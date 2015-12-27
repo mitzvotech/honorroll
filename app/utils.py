@@ -17,7 +17,7 @@ def load_attorneys_from_csv(filename):
             a.middle_initial = attorney[1]
             a.last_name = attorney[2]
             a.email_address = attorney[3]
-            a.organization_name = Organization.objects(organization_name=attorney[4]).upsert_one()
+            a.organization_name = Organization.objects(organization_name=attorney[4]).upsert_one().organization_name
             a.records.append({
                 'year': attorney[5],
                 'honor_choice': attorney[6],

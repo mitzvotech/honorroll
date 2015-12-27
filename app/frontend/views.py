@@ -7,7 +7,6 @@ from forms import (
 from models import *
 from lib.email import send_confirmation
 from utils import check_new_email
-# from flask_sslify import SSLify
 import mandrill
 import os
 from bson.objectid import ObjectId
@@ -58,7 +57,8 @@ def add(attorney_id=None):
         else:
             attorney.organization_name = Organization.objects(
                     organization_name=form.organization_name.data
-                ).upsert_one(organization_name=form.organization_name.data)
+                ).upsert_one(organization_name=form.organization_name.data) \
+                .organization_name
             atty = attorney.save()
 
         # check to see if the organization name exists in the json file and,

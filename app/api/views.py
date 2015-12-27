@@ -3,7 +3,7 @@ from flask import (
 )
 from bson.json_util import dumps
 from models import Attorney, Organization
-from app.cache import cache
+from cache import cache
 
 api = Blueprint('api', __name__, static_folder='../static')
 

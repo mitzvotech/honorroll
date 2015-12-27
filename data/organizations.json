@@ -1,1 +1,1649 @@
-["ABA Commission on Domestic & Sexual Violence", "Akin Gump Strauss Hauer & Feld LLP", "Alston & Bird LLP", "Andrew N. Stein", "Andrews Kurth LLP", "Arent Fox LLP", "Armfield Law Firm", "Arnold & Porter LLP", "Baker & McKenzie LLP", "Baker Botts LLP", "Baker Hostetler LLP", "Ballard Spahr LLP", "Bernabei & Wachtel, PLLC", "Beveridge & Diamond, PC", "Bingham McCutchen", "Blank Rome LLP", "Boies, Schiller & Flexner LLP", "Bradley Miliauskas, Alston & Bird LLP", "Bryan Cave LLP", "BuckleySandler LLP", "Cadwalader, Wickersham & Taft, LLP", "Cameron LLP", "Carlton Fields Jorden Burt PA", "Chadbourne & Parke LLP", "Cleary Gottlieb Steen & Hamilton LLP", "Cooley LLP", "Council of the District of Columbia", "Covington & Burling LLP", "Crowell & Moring, LLP", "DC Volunteer Lawyers' Project", "DLA Piper LLP (US)", "Davis Wright Tremaine LLP", "Debevoise & Plimpton", "Dechert LLP", "Delaney McKinney, LLP", "Deloitte FAS", "Dentons US LLP", "Dickstein Shapiro LLP", "District of Columbia Public Schools", "Drinker Biddle & Reath LLP", "Duane Morris LLP", "Epstein Becker & Green, P.C.", "Federal Election Commission", "Fish & Richardson PC", "Fitzpatrick, Cella, Harper & Scinto", "Foley & Lardner LLP", "Fried, Frank, Harris, Shriver & Jacobson LLP", "Garza, Regan & Associates, P.C.", "Georgetown University Law Center", "Gibson, Dunn & Crutcher LLP", "Goodwin Procter LLP", "Gray Plant Mooty Mooty & Bennett, P.A.", "Greenberg Traurig, LLP", "Gura & Possessky, PLLCJulie Posteraro", "Hanover Law PC", "Hanover Law, PC", "Haynes and Boone, LLP", "Hogan Lovells US LLP", "Hogan Lovells US LLPJohn Mellyn, Shearman & Sterling LLP", "Holland & Knight LLP", "Hughes Hubbard & Reed LLP", "Hunton & Williams LLP", "Jenner & Block LLP", "Jones Day", "Jones DayMarie Diveley, Crowell & Moring, LLP", "K&L Gates LLP", "Katten Muchin Rosenman", "Kaye Scholer LLP", "Keller and Heckman LLP", "Kerry Dingle, Latham & Watkins LLP", "Kilpatrick Townsend & Stockton LLP", "King & Spalding", "Kirkland & Ellis LLP", "Kuder, Smollar & Friedman, PC", "Latham & Watkins LLP", "Law Office Of Kirti Patel LLC", "Law Office of Alan B. Soschin, Esquire", "Law Office of Edgar Ndjatou, PLLC", "Law Office of Jody Marten", "Law Office of Kathryn L. Graham", "Law Offices of Adam Edward Rothwell", "Law Offices of Cynthia A. Groomes, P.C.", "Mayer Brown LLP", "McDermott Will & Emery LLP", "McKenna Long & Aldridge LLP", "Miller & Chevalier Chartered", "Mintz Levin Cohn Ferris Glovsky & Popeo, PC", "Morgan, Lewis & Bockius LLP", "Morrison & Foerster", "National Labor Relations Board", "Nixon Peabody LLP", "O'Melveny & Myers LLP", "Orrick, Herrington & Sutcliffe LLP", "Patrick Malone & Associates P.C.", "Patton Boggs LLP", "Paul Hastings LLP", "Paul Weiss", "Perkins Coie LLP", "Proskauer", "Reed Smith LLP", "Richard Arnholt, Crowell & Moring, LLP", "Richards Kibbe & Orbe LLP", "Ropes & Gray LLP", "Schnader Harrison Segal & Lewis LLP", "Securities and Exchange Commission", "Seyfarth Shaw LLP", "Shapiro, Lifschitz & Schram P.C.", "Shearman & Sterling LLP", "Sheppard, Mullin, Richter & Hampton LLP", "Shook, Hardy & Bacon LLP", "Sidley Austin LLP", "Skadden Arps", "Steptoe & Johnson", "Stinson Leonard Street LLP", "Sullivan & Cromwell LLP", "Sutherland Asbill & Brennan LLP", "The Catholic University of America", "The Law Offices of Emilie Fairbanks, PLLC", "Thompson Hine LLP", "Troutman Sanders", "U.S. Department of Education", "U.S. Department of Justice", "U.S. Department of Labor", "U.S. Department of Transportation", "U.S. Navy", "U.S. Office of Special Counsel", "U.S. Postal Service", "U.S. Securities & Exchange Commission", "U.S. Small Business Administration", "Venable LLP", "Vinson & Elkins, LLP", "Weil Gotshal & Manges LLP", "Wiley Rein LELP", "Williams & Connolly LLP", "WilmerHale", "Wilson Sonsini Goodrich & Rosati", "Winston & Strawn LLP", "Zamani & Scott LLP", "Zuckerman Spaeder LLP"]
+[
+  {
+    "_id": {
+      "$oid": "54a1b775f06515ecace2238d"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "54b5805ff06515ecace22c0b"
+    },
+    "organization_name": "Formerly Sidley Austin now DOJ"
+  },
+  {
+    "_id": {
+      "$oid": "54b6c3fcf06515ecace22e09"
+    },
+    "organization_name": "Law Office of Rebecca Simpson"
+  },
+  {
+    "_id": {
+      "$oid": "54b6c489f06515ecace22e0a"
+    },
+    "organization_name": "Jenner &amp; Block LLP"
+  },
+  {
+    "_id": {
+      "$oid": "54baa108f06515ecace2311d"
+    },
+    "organization_name": "Stroock & Stroock & Lavan LLP"
+  },
+  {
+    "_id": {
+      "$oid": "54c1b8c9f06515ecace2371e"
+    },
+    "organization_name": "Arnold &amp; Porter LLP"
+  },
+  {
+    "_id": {
+      "$oid": "54c2ee4ef06515ecace23846"
+    },
+    "organization_name": "Bass Berry & Sims"
+  },
+  {
+    "_id": {
+      "$oid": "54c4e115f06515ecace23a09"
+    },
+    "organization_name": "Willkie Farr & Gallagher LLP (no longer affiliated with firm)"
+  },
+  {
+    "_id": {
+      "$oid": "54c4ed4ef06515ecace23a12"
+    },
+    "organization_name": "Hum Law Firm, PLLC"
+  },
+  {
+    "_id": {
+      "$oid": "54c4fb97f06515ecace23a1f"
+    },
+    "organization_name": "The Vernia Law Firm"
+  },
+  {
+    "_id": {
+      "$oid": "54c5131ef06515ecace23a42"
+    },
+    "organization_name": "Wiley Rein "
+  },
+  {
+    "_id": {
+      "$oid": "54c51660f06515ecace23a48"
+    },
+    "organization_name": "O'Melveny &amp; Myers LLP"
+  },
+  {
+    "_id": {
+      "$oid": "54c52e07f06515ecace23a73"
+    },
+    "organization_name": "Bradley Arant Boult Cummings LLP"
+  },
+  {
+    "_id": {
+      "$oid": "54c55092f06515ecace23aab"
+    },
+    "organization_name": "Potomac Law Group, PLLC"
+  },
+  {
+    "_id": {
+      "$oid": "54c551a9f06515ecace23aae"
+    },
+    "organization_name": "Law Offices of Jack N Goodman"
+  },
+  {
+    "_id": {
+      "$oid": "54c55560f06515ecace23ab6"
+    },
+    "organization_name": "Erik M. Pelton & Associates"
+  },
+  {
+    "_id": {
+      "$oid": "54c55b05f06515ecace23abb"
+    },
+    "organization_name": "Robert D Roseman PC"
+  },
+  {
+    "_id": {
+      "$oid": "54c64ba0f06515ecace23bc8"
+    },
+    "organization_name": "Jenner & Block, LLP"
+  },
+  {
+    "_id": {
+      "$oid": "54c64db2f06515ecace23bcb"
+    },
+    "organization_name": "Beveridge &amp; Diamond, P.C."
+  },
+  {
+    "_id": {
+      "$oid": "54c65466f06515ecace23bda"
+    },
+    "organization_name": "Bracewell & Giuliani LLP"
+  },
+  {
+    "_id": {
+      "$oid": "54c656f9f06515ecace23bdf"
+    },
+    "organization_name": "Law Office of Sara Kropf PLLC"
+  },
+  {
+    "_id": {
+      "$oid": "54c658e6f06515ecace23be4"
+    },
+    "organization_name": "Benach Ragland LLP"
+  },
+  {
+    "_id": {
+      "$oid": "54c65febf06515ecace23bec"
+    },
+    "organization_name": "Cunningham Levy LLP"
+  },
+  {
+    "_id": {
+      "$oid": "54c67524f06515ecace23c04"
+    },
+    "organization_name": "Shearman &amp; Sterling LLP"
+  },
+  {
+    "_id": {
+      "$oid": "54c67558f06515ecace23c05"
+    },
+    "organization_name": "Foley Hoag"
+  },
+  {
+    "_id": {
+      "$oid": "54c67647f06515ecace23c07"
+    },
+    "organization_name": "Multicultural Media, Telecom and Internet Council | MMTC"
+  },
+  {
+    "_id": {
+      "$oid": "54c68cb5f06515ecace23c24"
+    },
+    "organization_name": "Cohen Milstein Sellers and Toll PLLC"
+  },
+  {
+    "_id": {
+      "$oid": "54c6ac0ff06515ecace23c4d"
+    },
+    "organization_name": "Bernabei &amp; Wachtel, PLLC"
+  },
+  {
+    "_id": {
+      "$oid": "54c6ad59f06515ecace23c51"
+    },
+    "organization_name": "Wiley Rein LLP"
+  },
+  {
+    "_id": {
+      "$oid": "54c6ba0ff06515ecace23c5a"
+    },
+    "organization_name": "Ain & Bank, P.C."
+  },
+  {
+    "_id": {
+      "$oid": "54c7a290f06515ecace23cf0"
+    },
+    "organization_name": "Williams &amp; Connolly LLP"
+  },
+  {
+    "_id": {
+      "$oid": "54c7ca48f06515ecace23d26"
+    },
+    "organization_name": "Patrick Malone &amp; Associates P.C."
+  },
+  {
+    "_id": {
+      "$oid": "54c7cd4af06515ecace23d2a"
+    },
+    "organization_name": "Burton Law LLC"
+  },
+  {
+    "_id": {
+      "$oid": "54c7dfd2f06515ecace23d45"
+    },
+    "organization_name": "Proskauer Rose LLP"
+  },
+  {
+    "_id": {
+      "$oid": "54c7e685f06515ecace23d52"
+    },
+    "organization_name": "U.S. Department of Justice"
+  },
+  {
+    "_id": {
+      "$oid": "54c7e816f06515ecace23d54"
+    },
+    "organization_name": "Ropes"
+  },
+  {
+    "_id": {
+      "$oid": "54c7e867f06515ecace23d56"
+    },
+    "organization_name": "Ropes &amp; Gray LLP (through Dec. 2014)"
+  },
+  {
+    "_id": {
+      "$oid": "54c7f778f06515ecace23d64"
+    },
+    "organization_name": "Zuckerm"
+  },
+  {
+    "_id": {
+      "$oid": "54c84865f06515ecace23da0"
+    },
+    "organization_name": "Cohen"
+  },
+  {
+    "_id": {
+      "$oid": "54c8dc9ef06515ecace23dd2"
+    },
+    "organization_name": "Miller &amp; Chevalier Chartered"
+  },
+  {
+    "_id": {
+      "$oid": "54c900d3f06515ecace23dfc"
+    },
+    "organization_name": "Law Offices of Dean Gregory"
+  },
+  {
+    "_id": {
+      "$oid": "54c91a8ff06515ecace23e1b"
+    },
+    "organization_name": "White & Case"
+  },
+  {
+    "_id": {
+      "$oid": "54c920e8f06515ecace23e21"
+    },
+    "organization_name": "O'Melveny and Myers LLP"
+  },
+  {
+    "_id": {
+      "$oid": "54c942abf06515ecace23e3f"
+    },
+    "organization_name": "Miller & Chevalier Chartered "
+  },
+  {
+    "_id": {
+      "$oid": "54c950ecf06515ecace23e45"
+    },
+    "organization_name": "Cohen Milstein Sellers & Toll"
+  },
+  {
+    "_id": {
+      "$oid": "54c9525df06515ecace23e46"
+    },
+    "organization_name": "Holland &amp; Knight LLP"
+  },
+  {
+    "_id": {
+      "$oid": "54ca66b5f06515ecace23e9b"
+    },
+    "organization_name": "Troutman Sanders "
+  },
+  {
+    "_id": {
+      "$oid": "54ca6736f06515ecace23e9c"
+    },
+    "organization_name": "Troutman S"
+  },
+  {
+    "_id": {
+      "$oid": "54ca7b15f06515ecace23ea5"
+    },
+    "organization_name": "Bakerdonelson.com"
+  },
+  {
+    "_id": {
+      "$oid": "54ca7f96f06515ecace23ea7"
+    },
+    "organization_name": "Epstein Becker &amp; Green, P.C."
+  },
+  {
+    "_id": {
+      "$oid": "54ca7fbef06515ecace23ea8"
+    },
+    "organization_name": "U.S. Office of Special Counsel"
+  },
+  {
+    "_id": {
+      "$oid": "54ca8fbaf06515ecace23eb2"
+    },
+    "organization_name": "N/A"
+  },
+  {
+    "_id": {
+      "$oid": "54cb848df06515ecace23ebe"
+    },
+    "organization_name": "Arnold & Porter"
+  },
+  {
+    "_id": {
+      "$oid": "54cb9619f06515ecace23ebf"
+    },
+    "organization_name": "Hollingsworth LLP"
+  },
+  {
+    "_id": {
+      "$oid": "54cbc554f06515ecace23ec3"
+    },
+    "organization_name": "Bryan "
+  },
+  {
+    "_id": {
+      "$oid": "54cbc805f06515ecace23ec4"
+    },
+    "organization_name": "Spiller-Reddick Immigration Law, PLLC"
+  },
+  {
+    "_id": {
+      "$oid": "54cbd037f06515ecace23ec6"
+    },
+    "organization_name": "Maggio + Kattar"
+  },
+  {
+    "_id": {
+      "$oid": "54cbdcd3f06515ecace23ec8"
+    },
+    "organization_name": "D.C. Bar"
+  },
+  {
+    "_id": {
+      "$oid": "54cbdee6f06515ecace23ec9"
+    },
+    "organization_name": "Guide Consulting Services, LLC"
+  },
+  {
+    "_id": {
+      "$oid": "54cbf718f06515ecace23ed2"
+    },
+    "organization_name": "Wilson Sonsini Goodrich &amp; Rosati"
+  },
+  {
+    "_id": {
+      "$oid": "54cbf7c4f06515ecace23ed3"
+    },
+    "organization_name": "Lannan Legal PLLC"
+  },
+  {
+    "_id": {
+      "$oid": "54cc109af06515ecace23ed6"
+    },
+    "organization_name": "The Law Office of Natalie Driver Womack, PLC"
+  },
+  {
+    "_id": {
+      "$oid": "54ccfc28f06515ecace23f19"
+    },
+    "organization_name": "Office of the Attorney General for the District of Columbia"
+  },
+  {
+    "_id": {
+      "$oid": "549906d3f1fd3f42972dfe1b"
+    },
+    "organization_name": "ABA Commission on Domestic & Sexual Violence"
+  },
+  {
+    "_id": {
+      "$oid": "549906d3f1fd3f42972dfe1c"
+    },
+    "organization_name": "Akin Gump Strauss Hauer & Feld LLP"
+  },
+  {
+    "_id": {
+      "$oid": "549906d3f1fd3f42972dfe1d"
+    },
+    "organization_name": "Alston & Bird LLP"
+  },
+  {
+    "_id": {
+      "$oid": "549906d3f1fd3f42972dfe1e"
+    },
+    "organization_name": "Andrew N. Stein"
+  },
+  {
+    "_id": {
+      "$oid": "549906d3f1fd3f42972dfe1f"
+    },
+    "organization_name": "Andrews Kurth LLP"
+  },
+  {
+    "_id": {
+      "$oid": "549906d3f1fd3f42972dfe20"
+    },
+    "organization_name": "Arent Fox LLP"
+  },
+  {
+    "_id": {
+      "$oid": "549906d3f1fd3f42972dfe21"
+    },
+    "organization_name": "Armfield Law Firm"
+  },
+  {
+    "_id": {
+      "$oid": "549906d3f1fd3f42972dfe22"
+    },
+    "organization_name": "Arnold & Porter LLP"
+  },
+  {
+    "_id": {
+      "$oid": "549906d3f1fd3f42972dfe23"
+    },
+    "organization_name": "Baker & McKenzie LLP"
+  },
+  {
+    "_id": {
+      "$oid": "549906d3f1fd3f42972dfe24"
+    },
+    "organization_name": "Baker Botts LLP"
+  },
+  {
+    "_id": {
+      "$oid": "549906d3f1fd3f42972dfe25"
+    },
+    "organization_name": "Baker Hostetler LLP"
+  },
+  {
+    "_id": {
+      "$oid": "549906d3f1fd3f42972dfe26"
+    },
+    "organization_name": "Ballard Spahr LLP"
+  },
+  {
+    "_id": {
+      "$oid": "549906d3f1fd3f42972dfe27"
+    },
+    "organization_name": "Bernabei & Wachtel, PLLC"
+  },
+  {
+    "_id": {
+      "$oid": "549906d3f1fd3f42972dfe29"
+    },
+    "organization_name": "Bingham McCutchen"
+  },
+  {
+    "_id": {
+      "$oid": "549906d4f1fd3f42972dfe2a"
+    },
+    "organization_name": "Blank Rome LLP"
+  },
+  {
+    "_id": {
+      "$oid": "549906d4f1fd3f42972dfe2b"
+    },
+    "organization_name": "Boies, Schiller & Flexner LLP"
+  },
+  {
+    "_id": {
+      "$oid": "549906d4f1fd3f42972dfe2c"
+    },
+    "organization_name": "Bradley Miliauskas, Alston & Bird LLP"
+  },
+  {
+    "_id": {
+      "$oid": "549906d4f1fd3f42972dfe2d"
+    },
+    "organization_name": "Bryan Cave LLP"
+  },
+  {
+    "_id": {
+      "$oid": "549906d4f1fd3f42972dfe2e"
+    },
+    "organization_name": "BuckleySandler LLP"
+  },
+  {
+    "_id": {
+      "$oid": "549906d4f1fd3f42972dfe2f"
+    },
+    "organization_name": "Cadwalader, Wickersham & Taft, LLP"
+  },
+  {
+    "_id": {
+      "$oid": "549906d4f1fd3f42972dfe30"
+    },
+    "organization_name": "Cameron LLP"
+  },
+  {
+    "_id": {
+      "$oid": "549906d4f1fd3f42972dfe31"
+    },
+    "organization_name": "Carlton Fields Jorden Burt PA"
+  },
+  {
+    "_id": {
+      "$oid": "549906d4f1fd3f42972dfe32"
+    },
+    "organization_name": "Chadbourne & Parke LLP"
+  },
+  {
+    "_id": {
+      "$oid": "549906d4f1fd3f42972dfe33"
+    },
+    "organization_name": "Cleary Gottlieb Steen & Hamilton LLP"
+  },
+  {
+    "_id": {
+      "$oid": "549906d4f1fd3f42972dfe34"
+    },
+    "organization_name": "Cooley LLP"
+  },
+  {
+    "_id": {
+      "$oid": "549906d4f1fd3f42972dfe35"
+    },
+    "organization_name": "Council of the District of Columbia"
+  },
+  {
+    "_id": {
+      "$oid": "549906d4f1fd3f42972dfe36"
+    },
+    "organization_name": "Covington & Burling LLP"
+  },
+  {
+    "_id": {
+      "$oid": "549906d4f1fd3f42972dfe37"
+    },
+    "organization_name": "Crowell & Moring, LLP"
+  },
+  {
+    "_id": {
+      "$oid": "549906d4f1fd3f42972dfe38"
+    },
+    "organization_name": "DC Volunteer Lawyers' Project"
+  },
+  {
+    "_id": {
+      "$oid": "549906d4f1fd3f42972dfe39"
+    },
+    "organization_name": "DLA Piper LLP (US)"
+  },
+  {
+    "_id": {
+      "$oid": "549906d4f1fd3f42972dfe3a"
+    },
+    "organization_name": "Davis Wright Tremaine LLP"
+  },
+  {
+    "_id": {
+      "$oid": "549906d4f1fd3f42972dfe3b"
+    },
+    "organization_name": "Debevoise & Plimpton"
+  },
+  {
+    "_id": {
+      "$oid": "549906d4f1fd3f42972dfe3c"
+    },
+    "organization_name": "Dechert LLP"
+  },
+  {
+    "_id": {
+      "$oid": "549906d4f1fd3f42972dfe3d"
+    },
+    "organization_name": "Delaney McKinney, LLP"
+  },
+  {
+    "_id": {
+      "$oid": "549906d4f1fd3f42972dfe3e"
+    },
+    "organization_name": "Deloitte FAS"
+  },
+  {
+    "_id": {
+      "$oid": "549906d4f1fd3f42972dfe3f"
+    },
+    "organization_name": "Dentons US LLP"
+  },
+  {
+    "_id": {
+      "$oid": "549906d4f1fd3f42972dfe40"
+    },
+    "organization_name": "Dickstein Shapiro LLP"
+  },
+  {
+    "_id": {
+      "$oid": "549906d4f1fd3f42972dfe41"
+    },
+    "organization_name": "District of Columbia Public Schools"
+  },
+  {
+    "_id": {
+      "$oid": "549906d4f1fd3f42972dfe42"
+    },
+    "organization_name": "Drinker Biddle & Reath LLP"
+  },
+  {
+    "_id": {
+      "$oid": "549906d4f1fd3f42972dfe43"
+    },
+    "organization_name": "Duane Morris LLP"
+  },
+  {
+    "_id": {
+      "$oid": "549906d5f1fd3f42972dfe44"
+    },
+    "organization_name": "Epstein Becker & Green, P.C."
+  },
+  {
+    "_id": {
+      "$oid": "549906d5f1fd3f42972dfe46"
+    },
+    "organization_name": "Fish & Richardson PC"
+  },
+  {
+    "_id": {
+      "$oid": "549906d5f1fd3f42972dfe47"
+    },
+    "organization_name": "Fitzpatrick, Cella, Harper & Scinto"
+  },
+  {
+    "_id": {
+      "$oid": "549906d5f1fd3f42972dfe48"
+    },
+    "organization_name": "Foley & Lardner LLP"
+  },
+  {
+    "_id": {
+      "$oid": "549906d5f1fd3f42972dfe49"
+    },
+    "organization_name": "Fried, Frank, Harris, Shriver & Jacobson LLP"
+  },
+  {
+    "_id": {
+      "$oid": "549906d5f1fd3f42972dfe4a"
+    },
+    "organization_name": "Garza, Regan & Associates, P.C."
+  },
+  {
+    "_id": {
+      "$oid": "549906d5f1fd3f42972dfe4b"
+    },
+    "organization_name": "Georgetown University Law Center"
+  },
+  {
+    "_id": {
+      "$oid": "549906d5f1fd3f42972dfe4c"
+    },
+    "organization_name": "Gibson, Dunn & Crutcher LLP"
+  },
+  {
+    "_id": {
+      "$oid": "549906d5f1fd3f42972dfe4d"
+    },
+    "organization_name": "Goodwin Procter LLP"
+  },
+  {
+    "_id": {
+      "$oid": "549906d5f1fd3f42972dfe4e"
+    },
+    "organization_name": "Gray Plant Mooty Mooty & Bennett, P.A."
+  },
+  {
+    "_id": {
+      "$oid": "549906d5f1fd3f42972dfe4f"
+    },
+    "organization_name": "Greenberg Traurig, LLP"
+  },
+  {
+    "_id": {
+      "$oid": "549906d5f1fd3f42972dfe51"
+    },
+    "organization_name": "Hanover Law PC"
+  },
+  {
+    "_id": {
+      "$oid": "549906d5f1fd3f42972dfe52"
+    },
+    "organization_name": "Hanover Law, PC"
+  },
+  {
+    "_id": {
+      "$oid": "549906d5f1fd3f42972dfe53"
+    },
+    "organization_name": "Haynes and Boone, LLP"
+  },
+  {
+    "_id": {
+      "$oid": "549906d5f1fd3f42972dfe54"
+    },
+    "organization_name": "Hogan Lovells US LLP"
+  },
+  {
+    "_id": {
+      "$oid": "549906d5f1fd3f42972dfe56"
+    },
+    "organization_name": "Holland & Knight LLP"
+  },
+  {
+    "_id": {
+      "$oid": "549906d5f1fd3f42972dfe57"
+    },
+    "organization_name": "Hughes Hubbard & Reed LLP"
+  },
+  {
+    "_id": {
+      "$oid": "549906d5f1fd3f42972dfe58"
+    },
+    "organization_name": "Hunton & Williams LLP"
+  },
+  {
+    "_id": {
+      "$oid": "549906d5f1fd3f42972dfe5a"
+    },
+    "organization_name": "Jones Day"
+  },
+  {
+    "_id": {
+      "$oid": "549906d5f1fd3f42972dfe5c"
+    },
+    "organization_name": "K&L Gates LLP"
+  },
+  {
+    "_id": {
+      "$oid": "549906d5f1fd3f42972dfe5d"
+    },
+    "organization_name": "Katten Muchin Rosenman"
+  },
+  {
+    "_id": {
+      "$oid": "549906d5f1fd3f42972dfe5e"
+    },
+    "organization_name": "Kaye Scholer LLP"
+  },
+  {
+    "_id": {
+      "$oid": "549906d5f1fd3f42972dfe5f"
+    },
+    "organization_name": "Keller and Heckman LLP"
+  },
+  {
+    "_id": {
+      "$oid": "549906d6f1fd3f42972dfe61"
+    },
+    "organization_name": "Kilpatrick Townsend & Stockton LLP"
+  },
+  {
+    "_id": {
+      "$oid": "549906d6f1fd3f42972dfe62"
+    },
+    "organization_name": "King & Spalding"
+  },
+  {
+    "_id": {
+      "$oid": "549906d6f1fd3f42972dfe63"
+    },
+    "organization_name": "Kirkland & Ellis LLP"
+  },
+  {
+    "_id": {
+      "$oid": "549906d6f1fd3f42972dfe64"
+    },
+    "organization_name": "Kuder, Smollar & Friedman, PC"
+  },
+  {
+    "_id": {
+      "$oid": "549906d6f1fd3f42972dfe65"
+    },
+    "organization_name": "Latham & Watkins LLP"
+  },
+  {
+    "_id": {
+      "$oid": "549906d6f1fd3f42972dfe66"
+    },
+    "organization_name": "Law Office Of Kirti Patel LLC"
+  },
+  {
+    "_id": {
+      "$oid": "549906d6f1fd3f42972dfe67"
+    },
+    "organization_name": "Law Office of Alan B. Soschin, Esquire"
+  },
+  {
+    "_id": {
+      "$oid": "549906d6f1fd3f42972dfe68"
+    },
+    "organization_name": "Law Office of Edgar Ndjatou, PLLC"
+  },
+  {
+    "_id": {
+      "$oid": "549906d6f1fd3f42972dfe69"
+    },
+    "organization_name": "Law Office of Jody Marten"
+  },
+  {
+    "_id": {
+      "$oid": "549906d6f1fd3f42972dfe6a"
+    },
+    "organization_name": "Law Office of Kathryn L. Graham"
+  },
+  {
+    "_id": {
+      "$oid": "549906d6f1fd3f42972dfe6b"
+    },
+    "organization_name": "Law Offices of Adam Edward Rothwell"
+  },
+  {
+    "_id": {
+      "$oid": "549906d6f1fd3f42972dfe6c"
+    },
+    "organization_name": "Law Offices of Cynthia A. Groomes, P.C."
+  },
+  {
+    "_id": {
+      "$oid": "549906d6f1fd3f42972dfe6d"
+    },
+    "organization_name": "Mayer Brown LLP"
+  },
+  {
+    "_id": {
+      "$oid": "549906d6f1fd3f42972dfe6f"
+    },
+    "organization_name": "McKenna Long & Aldridge LLP"
+  },
+  {
+    "_id": {
+      "$oid": "549906d6f1fd3f42972dfe70"
+    },
+    "organization_name": "Miller & Chevalier Chartered"
+  },
+  {
+    "_id": {
+      "$oid": "549906d6f1fd3f42972dfe73"
+    },
+    "organization_name": "Morrison & Foerster"
+  },
+  {
+    "_id": {
+      "$oid": "549906d6f1fd3f42972dfe75"
+    },
+    "organization_name": "Nixon Peabody LLP"
+  },
+  {
+    "_id": {
+      "$oid": "549906d6f1fd3f42972dfe76"
+    },
+    "organization_name": "O'Melveny & Myers LLP"
+  },
+  {
+    "_id": {
+      "$oid": "549906d6f1fd3f42972dfe77"
+    },
+    "organization_name": "Orrick, Herrington & Sutcliffe LLP"
+  },
+  {
+    "_id": {
+      "$oid": "549906d6f1fd3f42972dfe78"
+    },
+    "organization_name": "Patrick Malone & Associates P.C."
+  },
+  {
+    "_id": {
+      "$oid": "549906d6f1fd3f42972dfe79"
+    },
+    "organization_name": "Patton Boggs LLP"
+  },
+  {
+    "_id": {
+      "$oid": "549906d6f1fd3f42972dfe7a"
+    },
+    "organization_name": "Paul Hastings LLP"
+  },
+  {
+    "_id": {
+      "$oid": "549906d7f1fd3f42972dfe7b"
+    },
+    "organization_name": "Paul Weiss"
+  },
+  {
+    "_id": {
+      "$oid": "549906d7f1fd3f42972dfe7c"
+    },
+    "organization_name": "Perkins Coie LLP"
+  },
+  {
+    "_id": {
+      "$oid": "549906d7f1fd3f42972dfe7d"
+    },
+    "organization_name": "Proskauer"
+  },
+  {
+    "_id": {
+      "$oid": "549906d7f1fd3f42972dfe7e"
+    },
+    "organization_name": "Reed Smith LLP"
+  },
+  {
+    "_id": {
+      "$oid": "549906d7f1fd3f42972dfe7f"
+    },
+    "organization_name": "Richard Arnholt, Crowell & Moring, LLP"
+  },
+  {
+    "_id": {
+      "$oid": "549906d7f1fd3f42972dfe81"
+    },
+    "organization_name": "Ropes & Gray LLP"
+  },
+  {
+    "_id": {
+      "$oid": "549906d7f1fd3f42972dfe82"
+    },
+    "organization_name": "Schnader Harrison Segal & Lewis LLP"
+  },
+  {
+    "_id": {
+      "$oid": "549906d7f1fd3f42972dfe84"
+    },
+    "organization_name": "Seyfarth Shaw LLP"
+  },
+  {
+    "_id": {
+      "$oid": "549906d7f1fd3f42972dfe85"
+    },
+    "organization_name": "Shapiro, Lifschitz & Schram P.C."
+  },
+  {
+    "_id": {
+      "$oid": "549906d7f1fd3f42972dfe86"
+    },
+    "organization_name": "Shearman & Sterling LLP"
+  },
+  {
+    "_id": {
+      "$oid": "549906d7f1fd3f42972dfe87"
+    },
+    "organization_name": "Sheppard, Mullin, Richter & Hampton LLP"
+  },
+  {
+    "_id": {
+      "$oid": "549906d7f1fd3f42972dfe88"
+    },
+    "organization_name": "Shook, Hardy & Bacon LLP"
+  },
+  {
+    "_id": {
+      "$oid": "549906d7f1fd3f42972dfe89"
+    },
+    "organization_name": "Sidley Austin LLP"
+  },
+  {
+    "_id": {
+      "$oid": "549906d7f1fd3f42972dfe8a"
+    },
+    "organization_name": "Skadden Arps"
+  },
+  {
+    "_id": {
+      "$oid": "549906d7f1fd3f42972dfe8b"
+    },
+    "organization_name": "Steptoe & Johnson"
+  },
+  {
+    "_id": {
+      "$oid": "549906d7f1fd3f42972dfe8c"
+    },
+    "organization_name": "Stinson Leonard Street LLP"
+  },
+  {
+    "_id": {
+      "$oid": "549906d7f1fd3f42972dfe8d"
+    },
+    "organization_name": "Sullivan & Cromwell LLP"
+  },
+  {
+    "_id": {
+      "$oid": "549906d7f1fd3f42972dfe8e"
+    },
+    "organization_name": "Sutherland Asbill & Brennan LLP"
+  },
+  {
+    "_id": {
+      "$oid": "549906d7f1fd3f42972dfe8f"
+    },
+    "organization_name": "The Catholic University of America"
+  },
+  {
+    "_id": {
+      "$oid": "549906d7f1fd3f42972dfe90"
+    },
+    "organization_name": "The Law Offices of Emilie Fairbanks, PLLC"
+  },
+  {
+    "_id": {
+      "$oid": "549906d7f1fd3f42972dfe91"
+    },
+    "organization_name": "Thompson Hine LLP"
+  },
+  {
+    "_id": {
+      "$oid": "549906d7f1fd3f42972dfe92"
+    },
+    "organization_name": "Troutman Sanders"
+  },
+  {
+    "_id": {
+      "$oid": "549906d8f1fd3f42972dfe9c"
+    },
+    "organization_name": "Venable LLP"
+  },
+  {
+    "_id": {
+      "$oid": "549906d8f1fd3f42972dfe9d"
+    },
+    "organization_name": "Vinson & Elkins, LLP"
+  },
+  {
+    "_id": {
+      "$oid": "549906d8f1fd3f42972dfe9e"
+    },
+    "organization_name": "Weil Gotshal & Manges LLP"
+  },
+  {
+    "_id": {
+      "$oid": "549906d8f1fd3f42972dfe9f"
+    },
+    "organization_name": "Wiley Rein LELP"
+  },
+  {
+    "_id": {
+      "$oid": "549906d8f1fd3f42972dfea0"
+    },
+    "organization_name": "Williams & Connolly LLP"
+  },
+  {
+    "_id": {
+      "$oid": "549906d8f1fd3f42972dfea1"
+    },
+    "organization_name": "WilmerHale"
+  },
+  {
+    "_id": {
+      "$oid": "549906d8f1fd3f42972dfea2"
+    },
+    "organization_name": "Wilson Sonsini Goodrich & Rosati"
+  },
+  {
+    "_id": {
+      "$oid": "549906d8f1fd3f42972dfea3"
+    },
+    "organization_name": "Winston & Strawn LLP"
+  },
+  {
+    "_id": {
+      "$oid": "549906d8f1fd3f42972dfea4"
+    },
+    "organization_name": "Zamani & Scott LLP"
+  },
+  {
+    "_id": {
+      "$oid": "549906d8f1fd3f42972dfea5"
+    },
+    "organization_name": "Zuckerman Spaeder LLP"
+  },
+  {
+    "_id": {
+      "$oid": "54aabee6f06515ecace224b3"
+    },
+    "organization_name": "Hewlett-Packard Co."
+  },
+  {
+    "_id": {
+      "$oid": "54aac0bff06515ecace224b5"
+    },
+    "organization_name": "Lawler, Metzger, Keeney & Logan, LLC"
+  },
+  {
+    "_id": {
+      "$oid": "54aafeb9f06515ecace224f6"
+    },
+    "organization_name": "Ms."
+  },
+  {
+    "_id": {
+      "$oid": "54aafec5f06515ecace224f7"
+    },
+    "organization_name": "Volunteer Staff Attorney, Legal Aid Society of the District of Columbia"
+  },
+  {
+    "_id": {
+      "$oid": "54ab25a0f06515ecace22508"
+    },
+    "organization_name": "Law Office of Victoria K. Hall"
+  },
+  {
+    "_id": {
+      "$oid": "54abfbebf06515ecace22588"
+    },
+    "organization_name": "Klein Hornig LLP"
+  },
+  {
+    "_id": {
+      "$oid": "54abff25f06515ecace2258c"
+    },
+    "organization_name": "Richards Kibbe &amp; Orbe LLP"
+  },
+  {
+    "_id": {
+      "$oid": "54ac4f58f06515ecace225d8"
+    },
+    "organization_name": "Squire Patton Boggs (US) LLP"
+  },
+  {
+    "_id": {
+      "$oid": "54ac6b92f06515ecace225e5"
+    },
+    "organization_name": "Joan Gillham, Attorney and Counselor at Law"
+  },
+  {
+    "_id": {
+      "$oid": "54ac7947f06515ecace225ee"
+    },
+    "organization_name": "Baker Donelson"
+  },
+  {
+    "_id": {
+      "$oid": "54ac8c1bf06515ecace225f7"
+    },
+    "organization_name": "McDermott Will &amp; Emery LLP"
+  },
+  {
+    "_id": {
+      "$oid": "54acfdb7f06515ecace2263b"
+    },
+    "organization_name": "international human rights lawyer"
+  },
+  {
+    "_id": {
+      "$oid": "54ad4300f06515ecace22675"
+    },
+    "organization_name": "Cowan, Liebowitz & Latman, P.C."
+  },
+  {
+    "_id": {
+      "$oid": "54ad4812f06515ecace2267b"
+    },
+    "organization_name": "Stewards of Affordable Housing for the Future"
+  },
+  {
+    "_id": {
+      "$oid": "54ad61cbf06515ecace22693"
+    },
+    "organization_name": "Cov"
+  },
+  {
+    "_id": {
+      "$oid": "54ad61e8f06515ecace22694"
+    },
+    "organization_name": "Covington &amp; Burling LLP"
+  },
+  {
+    "_id": {
+      "$oid": "54ad6e6bf06515ecace226a2"
+    },
+    "organization_name": "Gremminger Law Firm"
+  },
+  {
+    "_id": {
+      "$oid": "54ad7a0ff06515ecace226ac"
+    },
+    "organization_name": "CLINTON BROOK & PEED"
+  },
+  {
+    "_id": {
+      "$oid": "54ad948ff06515ecace226c6"
+    },
+    "organization_name": "Vorys Sater Seymour and Pease, LLP"
+  },
+  {
+    "_id": {
+      "$oid": "54ad9b34f06515ecace226cd"
+    },
+    "organization_name": "Metropolitan Washington Law Consortium"
+  },
+  {
+    "_id": {
+      "$oid": "54aeb6c0f06515ecace227c1"
+    },
+    "organization_name": "The Capital Consulting and Coaching Firm"
+  },
+  {
+    "_id": {
+      "$oid": "54b007f8f06515ecace228f0"
+    },
+    "organization_name": "Sedgwick LLP"
+  },
+  {
+    "_id": {
+      "$oid": "54b01767f06515ecace228f7"
+    },
+    "organization_name": "The George Washington University Law School"
+  },
+  {
+    "_id": {
+      "$oid": "54b03454f06515ecace22910"
+    },
+    "organization_name": "Morgan, Lewis &amp; Bockius LLP"
+  },
+  {
+    "_id": {
+      "$oid": "54b0386df06515ecace22911"
+    },
+    "organization_name": "Center for American Progress"
+  },
+  {
+    "_id": {
+      "$oid": "54b10bfef06515ecace2291a"
+    },
+    "organization_name": "Legal Services Corporation"
+  },
+  {
+    "_id": {
+      "$oid": "54b1cc5ff06515ecace22926"
+    },
+    "organization_name": "Equal Justice Works"
+  },
+  {
+    "_id": {
+      "$oid": "54b4064ef06515ecace22aa7"
+    },
+    "organization_name": "Beveridge &amp; Diamond, PC"
+  },
+  {
+    "_id": {
+      "$oid": "54b54283f06515ecace22b9e"
+    },
+    "organization_name": "Mintz Levin Cohn Ferris Glovsky &amp; Popeo, PC"
+  },
+  {
+    "_id": {
+      "$oid": "54b5700ef06515ecace22bf7"
+    },
+    "organization_name": "McCree Ndjatou, PLLC"
+  },
+  {
+    "_id": {
+      "$oid": "54b79bbdf1fd3f5e2a541120"
+    },
+    "organization_name": "Federal Government Attorney"
+  },
+  {
+    "_id": {
+      "$oid": "54b79bbdf1fd3f5e2a541121"
+    },
+    "organization_name": "Shearman & Sterling LLP"
+  },
+  {
+    "_id": {
+      "$oid": "54b79bbdf1fd3f5e2a541122"
+    },
+    "organization_name": "Gura & Possessky, PLLC"
+  },
+  {
+    "_id": {
+      "$oid": "54b7d365f06515ecace22f0b"
+    },
+    "organization_name": "Work performed while employed by Bingham McCutchen"
+  },
+  {
+    "_id": {
+      "$oid": "54b7ddd2f06515ecace22f10"
+    },
+    "organization_name": "Beveridge & Diamond, PC"
+  },
+  {
+    "_id": {
+      "$oid": "54b813b1f06515ecace22f2c"
+    },
+    "organization_name": "Morgan, Lewis & Bockius LLP"
+  },
+  {
+    "_id": {
+      "$oid": "54b84523f06515ecace22f3d"
+    },
+    "organization_name": "Freshfields Bruckhaus Deringer US LLP"
+  },
+  {
+    "_id": {
+      "$oid": "54b9409ef06515ecace23049"
+    },
+    "organization_name": "OAG-Department of Human Services"
+  },
+  {
+    "_id": {
+      "$oid": "54b94375f06515ecace2304d"
+    },
+    "organization_name": "The Ostrem Firm, LLC"
+  },
+  {
+    "_id": {
+      "$oid": "54b94479f06515ecace2304f"
+    },
+    "organization_name": "Columbus School of Law, The Catholic Univ. of America"
+  },
+  {
+    "_id": {
+      "$oid": "54b9589ff06515ecace23071"
+    },
+    "organization_name": "Self-employed"
+  },
+  {
+    "_id": {
+      "$oid": "54b97176f06515ecace23088"
+    },
+    "organization_name": "Kelley Drye & Warren LLP"
+  },
+  {
+    "_id": {
+      "$oid": "54bc0718f06515ecace23178"
+    },
+    "organization_name": "Gilbert LLP"
+  },
+  {
+    "_id": {
+      "$oid": "54bd70c2f06515ecace232e6"
+    },
+    "organization_name": "Law Offices of Jenifer Wicks"
+  },
+  {
+    "_id": {
+      "$oid": "54bd777cf06515ecace232ed"
+    },
+    "organization_name": "Legal Counsel for the Elderly"
+  },
+  {
+    "_id": {
+      "$oid": "54be6fabf06515ecace233d7"
+    },
+    "organization_name": "Morgan Lewis & Bockius LLP"
+  },
+  {
+    "_id": {
+      "$oid": "54be7ea6f06515ecace233ea"
+    },
+    "organization_name": "Beveridge & Diamond, P.C."
+  },
+  {
+    "_id": {
+      "$oid": "54bebd46f06515ecace23431"
+    },
+    "organization_name": "Advancing Justice - AAJC"
+  },
+  {
+    "_id": {
+      "$oid": "54bebea1f06515ecace23433"
+    },
+    "organization_name": "LAL LEGAL"
+  },
+  {
+    "_id": {
+      "$oid": "54bef27ff06515ecace2344e"
+    },
+    "organization_name": "Foley &amp; Lardner LLP"
+  },
+  {
+    "_id": {
+      "$oid": "54bef4f3f06515ecace2344f"
+    },
+    "organization_name": "Volunteer Attorney National Alliance on Mental Illness (NAMI)"
+  },
+  {
+    "_id": {
+      "$oid": "54bfe3fef06515ecace234eb"
+    },
+    "organization_name": "The Law Firm of Nicole Tuchinda, J.D., M.D., LLC"
+  },
+  {
+    "_id": {
+      "$oid": "54c04e48f06515ecace23578"
+    },
+    "organization_name": "Sutherland Asbill &amp; Brennan LLP"
+  },
+  {
+    "_id": {
+      "$oid": "54c12491f06515ecace23652"
+    },
+    "organization_name": "Pillsbury Winthrop Shaw Pittman"
+  },
+  {
+    "_id": {
+      "$oid": "54c1255bf06515ecace23653"
+    },
+    "organization_name": "Securities and Exchange Commission"
+  },
+  {
+    "_id": {
+      "$oid": "54c12560f06515ecace23654"
+    },
+    "organization_name": "Kilpatrick Townsend &amp; Stockton LLP"
+  },
+  {
+    "_id": {
+      "$oid": "54c14db2f06515ecace2369c"
+    },
+    "organization_name": "Mesirow & Associates, PLLC"
+  },
+  {
+    "_id": {
+      "$oid": "54c7de26f06515ecace23d43"
+    },
+    "organization_name": "Office of the General Counsel, Council of the District of Columbia"
+  },
+  {
+    "_id": {
+      "$oid": "54cd2421f06515ecace23f3c"
+    },
+    "organization_name": "Weil, Gotshal & Manges LLP"
+  },
+  {
+    "_id": {
+      "$oid": "54cd337ef06515ecace23f53"
+    },
+    "organization_name": "Shipman & Goodwin LLP"
+  },
+  {
+    "_id": {
+      "$oid": "54cd6809f06515ecace23f74"
+    },
+    "organization_name": "Shook, Hardy &amp; Bacon LLP"
+  },
+  {
+    "_id": {
+      "$oid": "54cfa1a6f06515ecace23fa1"
+    },
+    "organization_name": "Paulus Immigration"
+  },
+  {
+    "_id": {
+      "$oid": "54cfa282f06515ecace23fa2"
+    },
+    "organization_name": "Ropes & Gray"
+  },
+  {
+    "_id": {
+      "$oid": "54cfb04df06515ecace23fa4"
+    },
+    "organization_name": "Faegre Baker Daniels LLP"
+  },
+  {
+    "_id": {
+      "$oid": "54cfe7f4f06515ecace23faa"
+    },
+    "organization_name": "Weil Gotshal &amp; Manges LLP"
+  },
+  {
+    "_id": {
+      "$oid": "54cfe9c4f06515ecace23fab"
+    },
+    "organization_name": "Weil, Gotshal &amp; Manges LLP"
+  },
+  {
+    "_id": {
+      "$oid": "54cffe0ff06515ecace23fb4"
+    },
+    "organization_name": "AARP"
+  },
+  {
+    "_id": {
+      "$oid": "54d016f1f06515ecace23fb6"
+    },
+    "organization_name": "Law Office of Sally Marie O'Brien"
+  },
+  {
+    "_id": {
+      "$oid": "54d0ee0bf06515ecace23fde"
+    },
+    "organization_name": "Simpson Thacher & Bartlett"
+  },
+  {
+    "_id": {
+      "$oid": "54d0ee2bf06515ecace23fdf"
+    },
+    "organization_name": "Simpson Thacher & Bartlett LLP"
+  },
+  {
+    "_id": {
+      "$oid": "54d0f463f06515ecace23fe6"
+    },
+    "organization_name": "Simpson Thacher &amp; Bartlett LLP"
+  },
+  {
+    "_id": {
+      "$oid": "54d0f82df06515ecace23fea"
+    },
+    "organization_name": "Jackson Lewis P.C."
+  },
+  {
+    "_id": {
+      "$oid": "54d23933f06515ecace24047"
+    },
+    "organization_name": "Latham &amp; Watkins LLP"
+  },
+  {
+    "_id": {
+      "$oid": "54d25644f06515ecace24068"
+    },
+    "organization_name": "Brown Rudnick LLP"
+  },
+  {
+    "_id": {
+      "$oid": "54d2920ff06515ecace24097"
+    },
+    "organization_name": "DC Bar Pro Bono Program "
+  },
+  {
+    "_id": {
+      "$oid": "54d2c278f06515ecace240aa"
+    },
+    "organization_name": "Kellogg, Huber, Hansen, Todd, Evans, & Figel P.L.L.C."
+  },
+  {
+    "_id": {
+      "$oid": "54d39b1df06515ecace24120"
+    },
+    "organization_name": "Steptoe &amp; Johnson"
+  },
+  {
+    "_id": {
+      "$oid": "54d3a39bf06515ecace24129"
+    },
+    "organization_name": "Cadwalader, Wickersham &amp; Taft, LLP"
+  },
+  {
+    "_id": {
+      "$oid": "54d4eb0ff06515ecace241a7"
+    },
+    "organization_name": "McGuireWoods LLP"
+  },
+  {
+    "_id": {
+      "$oid": "54d4f399f06515ecace241af"
+    },
+    "organization_name": "Law Firm of Raymond R. Jones "
+  },
+  {
+    "_id": {
+      "$oid": "54d4f477f06515ecace241b1"
+    },
+    "organization_name": "McguireWoods"
+  },
+  {
+    "_id": {
+      "$oid": "54d4f74ef06515ecace241b4"
+    },
+    "organization_name": "Bauer Law Firm"
+  },
+  {
+    "_id": {
+      "$oid": "54d50d09f06515ecace241c9"
+    },
+    "organization_name": "Saul Ewing LLP"
+  },
+  {
+    "_id": {
+      "$oid": "54d51b1bf06515ecace241d6"
+    },
+    "organization_name": "Drinker "
+  },
+  {
+    "_id": {
+      "$oid": "54d52e82f06515ecace241e9"
+    },
+    "organization_name": "Willkie Farr &amp; Gallagher LLP (no longer affiliated with firm)"
+  },
+  {
+    "_id": {
+      "$oid": "54d55c8ef06515ecace241f9"
+    },
+    "organization_name": "Groom Law Group, Chartered"
+  },
+  {
+    "_id": {
+      "$oid": "54d775f5f06515ecace2422b"
+    },
+    "organization_name": "D.C. Bar Pro Bono Program"
+  },
+  {
+    "_id": {
+      "$oid": "54da2239f06515ecace243c4"
+    },
+    "organization_name": "Debevoise & Plimpton LLP"
+  },
+  {
+    "_id": {
+      "$oid": "54da22c4f06515ecace243c6"
+    },
+    "organization_name": "Devevoise & Plimpton LLP"
+  },
+  {
+    "_id": {
+      "$oid": "54da817bf06515ecace24419"
+    },
+    "organization_name": "Fried, Frank, Harris, Shriver &amp; Jacobson LLP"
+  },
+  {
+    "_id": {
+      "$oid": "567bea2e7945c18442d94168"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "567c31539bd92dfd64c7f27e"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "567c317b9bd92dfd64c7f27f"
+    },
+    "organization_name": "Test Org"
+  },
+  {
+    "_id": {
+      "$oid": "567c31d59bd92dfd64c7f280"
+    },
+    "organization_name": "TestOrg"
+  },
+  {
+    "_id": {
+      "$oid": "567c5edc9bd92dfd64c7f281"
+    },
+    "organization_name": ""
+  }
+]
