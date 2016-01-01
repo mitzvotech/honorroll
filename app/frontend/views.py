@@ -26,6 +26,11 @@ def view():
     return render_template("view.html")
 
 
+@frontend.route("/recognition")
+def recognition():
+    return render_template("recognition.html")
+
+
 @frontend.route("/questions")
 def questions():
     return render_template("questions.html")

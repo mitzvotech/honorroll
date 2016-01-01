@@ -9,7 +9,12 @@ class TestFrontend:
     def test_frontend_home(self, client):
         # Check to see if the home page works
         res = client.get(url_for('frontend.index'))
-        assert "Open Letter to Pro Bono Honor Roll Registrants from Chief Judge Washington and Chief Judge Satterfield" in str(res.get_data())
+        assert "Capital Pro Bono Honor Roll" in str(res.get_data())
+        assert res.status_code == 200
+
+    def test_frontend_recognition(self, client):
+        # Check to see if the home page works
+        res = client.get(url_for('frontend.recognition'))
         assert res.status_code == 200
 
     def test_frontend_questions(self, client):
