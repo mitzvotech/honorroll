@@ -62,7 +62,7 @@ def add(attorney_id=None):
         else:
             attorney.organization_name = Organization.objects(
                     organization_name=form.organization_name.data
-                ).upsert_one(organization_name=form.organization_name.data, update=True) \
+                ).first() \
                 .organization_name
             atty = attorney.save()
 
