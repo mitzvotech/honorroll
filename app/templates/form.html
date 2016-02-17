@@ -22,6 +22,8 @@
 {% endwith %}
 <h1 id="attorneys-form-header">Register for the Capital Pro Bono Honor Roll</h1>
 <p>On this first page, you will be asked to submit your name, email address and firm affiliation (if any).* Once you click submit, you will be directed to a second page at which you will certify additional information that is necessary for inclusion in the Capital Pro Bono Honor Roll.</p>
+<p><strong>If you previously registered for the Honor Roll, please enter your email address <a href="https://capitalprobono.org/email_edit">in this form</a>, and an email will be sent with a link to update your information.</strong></p>
+<p>Some law firms submit information to the Capital Pro Bono Honor Roll on behalf of their attorneys. Please check with your pro bono counsel or pro bono coordinator to determine whether your firm is making a direct submission on your behalf. If you would like to submit bulk data, download <a href="{{ url_for('static', filename='docs/bulkattorneys.csv') }}">this test data file</a>, fill in the correct data and email the data to <a href="mailto:dave@esq.io">dave@esq.io</a>.</p>
 <p>* Federal government attorneys should not identify their agency, but instead should select "Federal Government Attorney".</p>
   <div class="form-style-8">
   <form class="grid-form" action="{{request.path}}" method="POST">
