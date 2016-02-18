@@ -60,10 +60,14 @@ def add(attorney_id=None):
                           Please use this edit feature to make changes"))
             return redirect(url_for('frontend.email_edit'))
         else:
-            attorney.organization_name = Organization.objects(
+            org = Organization.objects(
                     organization_name=form.organization_name.data
-                ).first() \
-                .organization_name
+                ).first()
+            if not org:
+                org = Organization(
+                    organization_name=form.organization_name.data
+                ).save()
+            attorney.organization_name = org.organization_name
             atty = attorney.save()
 
         # check to see if the organization name exists in the json file and,
